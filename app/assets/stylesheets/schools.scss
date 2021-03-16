@@ -1,0 +1,47 @@
+* {
+  box-sizing: border-box;
+}
+
+.top-page-header {
+  width: 100vw;
+  padding: 2vh 15vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.search-bar-contents {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cuota-icon {
+  width: 10vw;
+  margin-right: 10vw;
+}
+
+.search-form {
+  width: 50vw;
+  height: 5vh;
+  display: flex;
+  margin-bottom: 5px;
+}
+
+.search-form>.input-box {
+  width: 100%;
+  height: 5vh;
+  padding-left: 10px;
+  border-color:grey;
+}
+
+.search-button {
+  width: 12vh;
+  border: 0;
+  cursor: pointer;
+  padding: 3px;
+  background-color: white;
+}
+
+.search-icon {
+  width: 100%;
+}
