@@ -8,4 +8,10 @@
       </button>
     </form>
   </div>
+
+  <% if nursing_teacher_signed_in? %>
+    <div class='user-name'>
+      <%= "#{current_nursing_teacher.last_name} 先生 こんにちは" %>
+    </div>
+  <% end %>
 </header>
