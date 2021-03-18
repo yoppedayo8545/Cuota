@@ -10,18 +10,15 @@
   </div>
 
   <div class='user-contents'>
-      <% if nursing_teacher_signed_in? %>
         <ul class='current-name'>
           <li class='school-name'><%= @nursing_teacher.school.name %></li>
           <li><%= link_to "#{current_nursing_teacher.last_name} 先生", edit_nursing_teacher_registration_path, class: "edit" %></li>
           <li class='hello'><%= "こんにちは" %></li>
         </ul>
         <ul class='user-content'>  
-          <li><%= link_to 'ログアウト', destroy_nursing_teacher_session_path, method: :delete, class: "logout" %></li> 
-      <% else %>
-          <li><%= link_to '新規登録', new_nursing_teacher_registration_path, class: "sign-up" %></li>
-      <% end %>
-    </ul>
+          <li><%= link_to '編集', edit_nursing_teacher_registration_path, class: "sign-up" %></li>
+          <li><%= link_to 'ログアウト', destroy_nursing_teacher_session_path, method: :delete, class: "logout" %></li>  
+        </ul>
   </div>
 
 </header>

@@ -1,47 +1,104 @@
-<h2>Sign up</h2>
-
-<div class='form'>
-<%= form_for(resource, model: @school_teacher, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_area :last_name, autofocus: true, autocomplete: "last_name" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_area :first_name, autocomplete: "first_name" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-   <div class="field">
-    <%= f.label :school_id %><br />
-    <%= f.collection_select(:school_id, School.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
+<div class='search-bar-contents'>
+  <%= link_to image_tag('cuota-sample.png', class:"cuota-icon"), "/" %>
 </div>
 
-<%= render "devise/shared/links" %>
+<%= render "devise/shared/error_messages", resource: resource %>
+<div class="box">
+  <div class="box-inner">
+    <%= form_for(resource, model: @school_teacher, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <h1>新規登録</h1>
+
+    <div class="box-last_name">
+      <div class="a-row">
+        <div class="column-left">
+      <%= f.label :last_name, "苗字" %>
+      </div>
+       <div class="column-right">
+      <span class="mandatory">必須</span>
+      </div>
+      <%= f.text_field :last_name, autofocus: true, placeholder: "例)  田中 ", autocomplete: "last_name" %>
+    </div>
+  
+    <div class="box-first_name">
+     <div class="a-row">
+        <div class="column-left">
+      <%= f.label :first_name, "名前" %>
+      </div>
+        <div class="column-right">
+      <span class="mandatory">必須</span>
+      </div>
+      <%= f.text_field :first_name, placeholder: "例)  太郎 ", autocomplete: "first_name" %>
+    </div>
+  
+    <div class="box-email">
+     <div class="a-row">
+        <div class="column-left">
+      <%= f.label :email, "メールアドレス" %>
+      </div>
+        <div class="column-right">
+      <span class="mandatory">必須</span>
+      </div>
+      <%= f.email_field :email, placeholder: "例)  tanaka@email ", autocomplete: "email" %>
+    </div>
+  
+    <div class="box-password">
+      <div class="a-row">
+        <div class="column-left">
+          <%= f.label :password, "パスワード" %>
+        </div>
+        <div class="column-right">
+         <%= link_to "パスワードを忘れた場合", '#' %>
+         <span class="mandatory">必須</span>
+        </div>
+      </div>
+          <%= f.password_field :password, autocomplete: "new-password" %>
+          <% if @minimum_password_length %>
+             <em>(<%= @minimum_password_length %> 文字以上で入力してください)</em>
+        <% end %>
+    </div>
+  
+    <div class="box-password_confirmation">
+    <div class="a-row">
+        <div class="column-left">
+      <%= f.label :password_confirmation, "パスワード確認用" %>
+      </div>
+       <div class="column-right">
+      <span class="mandatory">必須</span>
+      </div>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    </div>
+  
+    <div class="box-school">
+    <div class="a-row">
+        <div class="column-left">
+      <%= f.label :school_id, "学校名" %>
+      </div>
+       <div class="column-right">
+      <span class="mandatory">必須</span>
+      </div>
+      <%= f.collection_select(:school_id, School.all, :id, :name, {}, {class:"select-box", id:"school-name"}) %>
+    </div>
+
+     <% if devise_mapping.rememberable? %>
+        <div class="remember">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember, "ログインしたままにする" %>
+        </div>
+      <% end %>
+  
+    <div class="box-login">
+      <%= f.submit "新規登録" %>
+    </div>
+  
+    <div class="legal-text">
+        続行することで、Cuotaの
+        <%= link_to "利用規約", "#" %>
+        および
+        <%= link_to "プライバシー規約", "#" %>
+        に同意するものとみなされます。
+    </div>
+     
+    <% end %>
+  </div>
+  <%= render "devise/shared/links" %>
+</div>

@@ -1,0 +1,7 @@
+.box-session {
+  width: 350px;
+  height: 40vh;
+  margin: 20px auto 0;
+  border-radius: 4px;
+  border: 1px #ddd solid;
+}
