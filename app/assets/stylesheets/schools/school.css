@@ -46,9 +46,54 @@
   width: 100%;
 }
 
-.user-name {
-  margin-left: 100px;
+.user-contents {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.current-name {
   color: slategray;
   font-size: larger;
-  font-family: 'Avenir','Helvetica Neue','Helvetica','Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic'  
+  font-weight: bold;
+  font-family: 'Avenir','Helvetica Neue','Helvetica','Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic'
+}
+
+.school-name {
+  font-size: larger;
+}
+
+.user-content {
+  display: flex;
+  font-size: larger;
+  font-family: 'Avenir','Helvetica Neue','Helvetica','Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic';
+  cursor: pointer;
+  color: #1e366a;
+  border-top: solid #1e366a 1px;
+  border-bottom: solid #1e366a 1px;
+  list-style-type: none;
+}
+
+.hello {
+  padding-right: 100px;
+}
+
+li {
+  width: 200px;
+  text-align: center;
+  display: inline-block;
+}
+
+.edit {
+  text-decoration: none;
+  color: slategray;
+  font-size: larger;
+  font-family: 'Avenir','Helvetica Neue','Helvetica','Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic'
+} 
+
+
+.sign-up, .logout {
+  text-decoration: none;
+  font-weight: bold;
+  color: #1e366a;
 }

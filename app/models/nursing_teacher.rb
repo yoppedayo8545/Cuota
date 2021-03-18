@@ -9,5 +9,6 @@ class NursingTeacher < ApplicationRecord
           validates :first_name
          end      
 
-         has_one :school
+         extend ActiveHash::Associations::ActiveRecordExtensions
+         belongs_to :school
 end
