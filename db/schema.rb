@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 2021_03_16_113609) do
     t.string "first_name", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.integer "school_id", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -24,17 +25,6 @@ ActiveRecord::Schema.define(version: 2021_03_16_113609) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_nursing_teachers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_nursing_teachers_on_reset_password_token", unique: true
-  end
-
-  create_table "schools", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "postal_code", null: false
-    t.string "prefectures", null: false
-    t.string "city", null: false
-    t.string "address", null: false
-    t.integer "phone_num", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
 end
