@@ -13,6 +13,8 @@ class NursingTeacher < ApplicationRecord
     validates :school_id
   end
 
+  has_many :students
+
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :school
 end
