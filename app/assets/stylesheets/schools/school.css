@@ -63,7 +63,7 @@
 }
 
 .user-content {
-  width: 25vw;
+  width: 30vw;
   margin-top: 15px;
   text-align: right;
   font-size: larger;
@@ -84,11 +84,7 @@ li {
   font-family: 'Avenir','Helvetica Neue','Helvetica','Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic'
 } 
 
-.edit {
-  margin-right: 15px;
-}
-
-.edit, .logout {
+.new-student, .edit, .logout {
   text-align: center;
   text-decoration: none;
   font-weight: bold;
