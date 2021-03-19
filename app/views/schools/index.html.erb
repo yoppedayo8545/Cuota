@@ -1,4 +1,4 @@
-<header class='top_page_header'>
+<header class='top-page-header'>
   <div class='search-bar-contents'>
    <%= link_to image_tag('cuota-sample.png', class:"cuota-icon"), "/" %>
     <form class='search-form' action="#">
@@ -11,12 +11,12 @@
 
   <div class='user-contents'>
         <ul class='current-name'>
-          <li class='school-name'><%= @nursing_teacher.school.name %></li>
-          <li><%= link_to "#{current_nursing_teacher.last_name} 先生", edit_nursing_teacher_registration_path, class: "edit" %></li>
+          <li class='school-name'><%= @nursing_teacher.school.name %></li><br>
+          <li><%= link_to "#{current_nursing_teacher.last_name} 先生", edit_nursing_teacher_registration_path, class: "user-name" %></li>
           <li class='hello'><%= "こんにちは" %></li>
         </ul>
         <ul class='user-content'>  
-          <li><%= link_to '編集', edit_nursing_teacher_registration_path, class: "sign-up" %></li>
+          <li><%= link_to '編集', edit_nursing_teacher_registration_path, class: "edit" %></li>
           <li><%= link_to 'ログアウト', destroy_nursing_teacher_session_path, method: :delete, class: "logout" %></li>  
         </ul>
   </div>

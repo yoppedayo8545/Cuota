@@ -4,20 +4,17 @@
 
 .top-page-header {
   width: 100vw;
-  padding: 2vh 15vw;
-  display: flex;
-  flex-direction: column;
+  padding: 2vh 10vw;
 }
 
 .search-bar-contents {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 }
 
 .cuota-icon {
   width: 10vw;
-  margin-right: 10vw;
 }
 
 .search-form {
@@ -49,7 +46,6 @@
 .user-contents {
   display: flex;
   justify-content: space-between;
-  align-items: center;
 }
 
 .current-name {
@@ -60,40 +56,44 @@
 }
 
 .school-name {
-  font-size: larger;
+  width: 50vw;
+  margin-bottom: 5px;
+  display: inline-block;
+  font-size: 50px;
 }
 
 .user-content {
-  display: flex;
+  width: 25vw;
+  margin-top: 15px;
+  text-align: right;
   font-size: larger;
   font-family: 'Avenir','Helvetica Neue','Helvetica','Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic';
   cursor: pointer;
-  color: #1e366a;
-  border-top: solid #1e366a 1px;
-  border-bottom: solid #1e366a 1px;
   list-style-type: none;
 }
 
-.hello {
-  padding-right: 100px;
-}
-
 li {
-  width: 200px;
-  text-align: center;
   display: inline-block;
 }
 
-.edit {
+.user-name {
+  width: 20vw;
   text-decoration: none;
   color: slategray;
-  font-size: larger;
+  font-size: 40px;
   font-family: 'Avenir','Helvetica Neue','Helvetica','Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic'
 } 
 
+.edit {
+  margin-right: 15px;
+}
 
-.sign-up, .logout {
+.edit, .logout {
+  text-align: center;
   text-decoration: none;
   font-weight: bold;
-  color: #1e366a;
+  color:white;
+  background-color: #1e366a;
+  padding: 8px;
+  border-radius: 15px;
 }
