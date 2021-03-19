@@ -16,7 +16,7 @@
           <li class='hello'><%= "こんにちは" %></li>
         </ul>
         <ul class='user-content'>  
-          <li><%= link_to '生徒新規登録', edit_nursing_teacher_registration_path, class: "new-student" %></li>
+          <li><%= link_to '生徒新規登録', new_student_path, class: "new-student" %></li>
           <li><%= link_to '管理者情報編集', edit_nursing_teacher_registration_path, class: "edit" %></li>
           <li><%= link_to 'ログアウト', destroy_nursing_teacher_session_path, method: :delete, class: "logout" %></li>  
         </ul>

@@ -33,13 +33,14 @@ ActiveRecord::Schema.define(version: 2021_03_19_031256) do
     t.date "date"
     t.integer "school_year", null: false
     t.string "school_class", null: false
-    t.integer "numder", null: false
+    t.integer "number", null: false
     t.string "gender", null: false
     t.string "brother"
     t.text "allergy"
     t.text "special_support"
     t.text "other_ht"
     t.text "other_nt"
+    t.integer "school_id", null: false
     t.bigint "nursing_teacher_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

@@ -1,0 +1,62 @@
+<div class='search-bar-contents-devise'>
+  <%= link_to image_tag('cuota-sample.png', class:"cuota-icon-devise"), "/" %>
+</div>
+
+<%# <%= render "devise/shared/error_messages", resource: resource %> 
+<div class="box-student">
+  <div class="box-inner-student">
+    <%= form_with model: @student, url: students_path, local: true do |f| %>
+      <h1>生徒新規登録</h1>
+
+    <div class="box-last_name">
+      <div class="a-row">
+        <div class="column-left">
+      <%= f.label :last_name, "苗字" %>
+      </div>
+       <div class="column-right">
+      <span class="mandatory">必須</span>
+      </div>
+      <%= f.text_field :last_name, autofocus: true, placeholder: "例)  田中 ", autocomplete: "last_name" %>
+    </div>
+  
+    <div class="box-first_name">
+     <div class="a-row">
+        <div class="column-left">
+      <%= f.label :first_name, "名前" %>
+      </div>
+        <div class="column-right">
+      <span class="mandatory">必須</span>
+      </div>
+      <%= f.text_field :first_name, placeholder: "例)  太郎 ", autocomplete: "first_name" %>
+    </div>
+  
+    <div class="box-email">
+     <div class="a-row">
+        <div class="column-left">
+      <%= f.label :email, "メールアドレス" %>
+      </div>
+        <div class="column-right">
+      <span class="mandatory">必須</span>
+      </div>
+      <%= f.email_field :email, placeholder: "例)  tanaka@email ", autocomplete: "email" %>
+    </div>
+  
+    <div class="box-password_confirmation">
+    <div class="a-row">
+        <div class="column-left">
+      <%= f.label :password_confirmation, "パスワード確認用" %>
+      </div>
+       <div class="column-right">
+      <span class="mandatory">必須</span>
+      </div>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    </div>
+  
+    <div class="box-login">
+      <%= f.submit "新規登録" %>
+    </div>
+      
+    <% end %>
+  </div>
+  <%# <%= render "devise/shared/links" %> 
+</div>
