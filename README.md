@@ -71,6 +71,8 @@ Things you may want to cover:
 | brother               | string       |                                |
 | allergy               | string       |                                |
 | medicine              | string       |                                |
+| anaphylaxis           | string       |                                |
+| allergy_other         | text         |                                |
 | special_support       | text         |                                |
 | other_ht              | text         |                                |
 | other_nt              | text         |                                |

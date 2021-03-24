@@ -4,20 +4,21 @@
 //   location.href = browser
 // }
 
-window.addEventListener('load', function(){
+// window.addEventListener('load', function(){
 
-  const pullDownButton = document.getElementById("first_grade")
+//   const pullDownButton = document.getElementById("first_grade")
 
-  pullDownButton.addEventListener('mouseover', function(){
-    console.log("mouseover OK")
-  })
+//   pullDownButton.addEventListener('mouseover', function(){
+//     console.log("mouseover OK")
+//   })
 
-  pullDownButton.addEventListener('mouseout', function(){
-    console.log("mouseout OK")
-  })
+//   pullDownButton.addEventListener('mouseout', function(){
+//     console.log("mouseout OK")
+//   })
 
-  pullDownButton.addEventListener('click', function() {
-    console.log("click OK")
-  })
+//   pullDownButton.addEventListener('click', function() {
+//     console.log("click OK")
+//   })
 
-})
+// })
+

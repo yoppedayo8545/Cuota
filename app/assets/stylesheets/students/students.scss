@@ -1,6 +1,21 @@
 // Place all the styles related to the students controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#canvas {
+  width: 100%;
+  height: 165%;
+  position: absolute;
+  opacity: 0.7;
+  z-index: -1;
+}
+
 .box-student {
   width: 350px;
   height: 650px;
@@ -24,12 +39,14 @@
   justify-content: space-around;
   padding-left: 10vw;
   padding-right: 10vw;
+  position: relative;
 }
 
 .list {
   width: 120px;
   height: 150px;
   overflow: scroll;
+  background-color: white;
   border-radius: 20px;
   border: 1px #ddd solid;
   text-align: center;
@@ -74,7 +91,8 @@ ul.year-list li::before {
 }
 
 .box-full-name input[type="text"], .box-full-name-kana input[type="text"],
-.box-number input[type="text"], .box-date input[type="text"] {
+.box-number input[type="text"], .box-date input[type="text"],
+.box-inner-edit input[type="text"] {
   border-style: none;
   box-sizing: border-box;
   width: 100%;
@@ -85,6 +103,21 @@ ul.year-list li::before {
   padding: 0 7px;
 }
 
+.medicine-lists input[type="text"],
+.anaphylaxis-lists input[type="text"] {
+  border-style: none;
+  box-sizing: border-box;
+  width: 90%;
+  height: 31px;
+  border: 1px solid #a6a6a6;
+  box-shadow: 0 1px 0 rgba(0,0,0,.07) inset;
+  border-radius: 3px;
+  padding: 0 7px;
+}
+
+.medicine-lists, .anaphylaxis-lists {
+  margin-bottom: 10px;
+}
 
 .student-edit-box {
   width: 100vw;
@@ -103,7 +136,7 @@ ul.year-list li::before {
 .box-student-edit {
   width: 100%;
   display: flex;
-  justify-content: center;
+  align-items: center;
  }
 
  .column-memo {
@@ -132,19 +165,33 @@ ul.year-list li::before {
 }
 
 .student-school-status {
+  width: 100%;
   display: flex;
   justify-content: center;
+  background-color: white;
 }
 
 .student-school-status h4 {
   font-size: 20px;
-  width: 300px;
+  width: 100%;
 }
 
+.box-inner-edit label, .medicine-lists label,
+.anaphylaxis-lists label {
+  background:linear-gradient(transparent 70%, #FFFF00 0%);
+}
 
 .student-status {
+  width: 100%;
   display: flex;
   justify-content: center;
+  margin-bottom: 20px;
+  background-color: white;
+}
+
+.student-status h4 {
+  font-size: 15px;
+  width: 100%;
 }
 
 h4 {
@@ -159,4 +206,51 @@ h4 {
 .class-name {
   margin-bottom: 120px;
   display: block;
+}
+
+.box-inner-edit {
+  margin-bottom: 10px;
+}
+
+#tabArea{
+  
+}
+ 
+#tabArea input[type="radio"] {
+  display        : none;  
+}
+ 
+#tabArea input[type="radio"] + label {
+  display        : inline-block;
+  position       : relative;
+  padding        : 6px 10px;  
+  font-size      : 12pt;      
+  font-weight    : bold;      
+  border         : 3px solid #999;
+  border-bottom  : none;          
+  border-radius  : 5px 5px 0 0;   
+  margin         : 0 1px;         
+  background     : #fff;          
+  color          : #666;          
+}
+ 
+#tabArea input[type="radio"]:checked + label {
+  border-color: #4682B4; 
+  color: #4682B4;     
+  cursor: default;
+  z-index: 2;  
+}
+ 
+#tabArea input[type="radio"]:not(:checked) + label:hover {
+  background: #b4cee2; 
+  cursor: pointer;    
+}
+
+.tabBody{
+  height: 780px;
+  padding: 20px 0;
+  position: relative;
+  border: 3px solid #4682B4;
+  margin-top: -3px;
+  z-index: 1;
 }

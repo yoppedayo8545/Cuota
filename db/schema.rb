@@ -38,7 +38,10 @@ ActiveRecord::Schema.define(version: 2021_03_19_031256) do
     t.integer "number", null: false
     t.integer "gender_id", null: false
     t.string "brother"
-    t.text "allergy"
+    t.string "allergy"
+    t.string "medicine"
+    t.string "anaphylaxis"
+    t.text "allergy_other"
     t.text "special_support"
     t.text "other_ht"
     t.text "other_nt"
