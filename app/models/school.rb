@@ -1,6 +1,6 @@
 class School < ActiveHash::Base
   self.data = [
-    { id: 1, name: '---' },
+    { id: 1, name: '葵小学校' },
     { id: 2, name: '吉田小学校' },
     { id: 3, name: '国立小学校' },
     { id: 4, name: '朝霞小学校' },
@@ -15,4 +15,5 @@ class School < ActiveHash::Base
 
   include ActiveHash::Associations
   has_many :nursing_teachers
+  has_many :students
 end

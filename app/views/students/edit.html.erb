@@ -1,0 +1,90 @@
+<div class='search-bar-contents-devise'>
+ <div class="icon-box">
+  <%= link_to image_tag('cuota-sample.png', class:"cuota-icon-devise"), "/" %>
+ </div> 
+</div>
+
+  <%= render "devise/shared/error_messages", resource: @student %> 
+
+
+  <h1>生徒メモ</h1>
+    <div class="student-edit-box">
+      <div class="student-school-status">
+        <h4>学校名: <%= @student.school.name %></h4>
+      </div>
+      <div class="student-status">
+        <h4>氏名<br>
+          <%= @student.last_name  %> <%= @student.first_name %>
+        </h4>
+        <h4>氏名<br>
+          <%= @student.last_kana  %> <%= @student.first_kana %>
+        </h4>
+        <h4>学年<br>
+          <%= @student.school_year_id %>年生
+        </h4>
+        <h4>クラス<br>
+          <%= @student.school_class_id %>組
+        </h4>
+        <h4>出席番号<br>
+          <%= @student.number %>番
+        </h4>
+        <h4>性別<br>
+          <%= @student.gender.name %>
+        </h4>
+        <h4>誕生日<br>
+          <%= @student.date %>
+        </h4>
+        <h4>兄弟<br>
+          <%= @student.brother %>
+        </h4>
+      </div>
+    
+
+    <div class="box-student-edit">
+      <%= form_with model: @student, url: student_path(@student.id), local: true do |f| %>
+        <div class="box-inner-edit">
+          <div class="column-memo">
+            <%= f.label :allergy, "アレルギー" %>
+            <%= f.text_field :allergy, autofocus: true, placeholder: "例)  アトピー性皮膚炎、アレルギー性結膜炎 ", autocomplete: "allergy" %>
+          </div>
+        </div>
+           <%= f.label :medicine, "エピペン・内服薬" %>
+          <label><input type="checkbox" name="scb1" value="on"
+              onclick="connecttext('textforscb1',this.checked);">有り</label>：
+          <input type="text" name="othertext" id="textforscb1" value="" placeholder="保管場所"><br>
+          <label><input type="checkbox" name="scb2" value="on">無し</label><br>
+  
+        <div class="box-inner-edit">
+          <div class="column-memo">
+            <%= f.label :special_support, "特別支援" %><br>
+            <%= f.text_area :special_support, placeholder: "例)  太郎 ", autocomplete: "special_support", size: "150x5" %>
+          </div>
+        </div>
+
+        <div class="box-inner-edit">
+          <div class="column-memo">
+            <%= f.label :other_ht, "担任メモ" %><br>
+            <%= f.text_area :other_ht, placeholder: "例)  2012-01-01 ", autocomplete: "other_ht", size: "150x5" %>
+          </div>
+        </div>
+
+        <div class="box-inner-edit">
+          <div class="column-memo">
+            <%= f.label :other_nt, "養護教諭メモ" %><br>
+            <%= f.text_area :other_nt, placeholder: "例)  1 ", autocomplete: "school_year", size: "150x5"  %>
+          </div>
+        </div>
+    
+      <div class="student-memo">
+        <%= f.submit "登録" %>
+      </div>
+
+      <% end %>
+
+    </div>
+
+    <div class='back'>
+      <%= link_to "戻る", root_path %>
+    </div>
+
+    </div>

@@ -1,7 +1,7 @@
 class StudentsController < ApplicationController
   # before_action :authenticate_nursing_teacher!, only: [:new,:edit,:destroy]
-  # before_action :set_student, only: [:edit, :create, :destroy]
-  # before_action :move_to_index, only: [:edit, :create]
+  before_action :set_student, only: [ :edit, :update]
+  before_action :move_to_index, only: [:edit, :update]
 
   def index
     @students = Student.all
@@ -20,13 +20,29 @@ class StudentsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @student.update(student_params)
+      redirect_to root_path
+    else 
+      render :edit
+    end
+  end
+
+  def search
+    @nursing_teacher = NursingTeacher.find(current_nursing_teacher.id)
+    @students = Student.search(params[:keyword])
+  end
+
   private
 
   def student_params
     params.require(:student).permit(
-      :last_name, :first_name, :date, :school_year, :school_class, :numder, :gender, 
-      :brother, :allergy, :special_support, :other_ht, :other_nt, :nursing_teacher 
-    ).merge(nursing_teacher_id: current_nursing_teacher.school_id)
+      :last_name, :first_name, :last_kana, :first_kana, :date, :school_year_id, :school_class_id, :number, :gender_id, 
+      :brother, :allergy, :special_support, :other_ht, :other_nt, :school_id, :nursing_teacher 
+    ).merge(nursing_teacher_id: current_nursing_teacher.id)
   end
 
   def set_student
@@ -34,7 +50,7 @@ class StudentsController < ApplicationController
   end
 
   def move_to_index
-    redirect_to root_path if @student.nursing_teacher.school_id != current_nursing_teacher.school_id
+    redirect_to root_path if @student.school_id != current_nursing_teacher.school_id 
   end
 
 end

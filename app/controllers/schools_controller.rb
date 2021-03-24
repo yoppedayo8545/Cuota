@@ -3,5 +3,8 @@ class SchoolsController < ApplicationController
 
   def index
     @nursing_teacher = NursingTeacher.find(current_nursing_teacher.id)
+    @students = Student.all.order(:number)
   end
+  
+  
 end

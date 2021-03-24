@@ -50,7 +50,7 @@ h3 {
 
 .box-last_name label, .box-first_name label,
 .box-email label, .box-password label,
-.box-password_confirmation label, .box-school label {
+.box-password_confirmation label, .box-school_id label {
   font-weight: 700;
   font-size: 13px;
   padding-left: 2px;
@@ -125,4 +125,11 @@ h3 {
 
 .back {
   text-align: center;
+  margin-bottom: 5vh;
+}
+
+.search-bar-contents-devise {
+ display: flex;
+ justify-content: center;
+ align-items: center;
 }

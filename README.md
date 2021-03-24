@@ -69,7 +69,8 @@ Things you may want to cover:
 | number                | integer      | null: false                    |
 | gender                | string       | null: false                    |
 | brother               | string       |                                |
-| allergy               | text         |                                |
+| allergy               | string       |                                |
+| medicine              | string       |                                |
 | special_support       | text         |                                |
 | other_ht              | text         |                                |
 | other_nt              | text         |                                |

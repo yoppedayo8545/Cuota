@@ -14,9 +14,9 @@
           <li class='hello'><%= "こんにちは" %></li>
         </ul>
         <ul class='user-content'>  
-          <li class='content-edit'><%= link_to '生徒新規登録', new_student_path, class: "new-student" %></li>
-          <li class='content-edit'><%= link_to '管理者情報編集', edit_nursing_teacher_registration_path, class: "edit" %></li>
-          <li class='content-logout'><%= link_to 'ログアウト', destroy_nursing_teacher_session_path, method: :delete, class: "logout" %></li>  
+          <li><%= link_to '生徒新規登録', new_student_path, class: "new-student" %></li>
+          <li><%= link_to '管理者情報編集', edit_nursing_teacher_registration_path, class: "edit" %></li>
+          <li><%= link_to 'ログアウト', destroy_nursing_teacher_session_path, method: :delete, class: "logout" %></li>  
         </ul>
   </div>
 
@@ -38,7 +38,7 @@
      <div class="class-list">  
         <div class='list'>
          <% @students.each do |student| %>
-            <% if (student.school_year_id == 1) && (student.school_class_id == 1) %> 
+            <% if (student.school_year == 1) && (student.school_class == 1) %> 
              <%= link_to edit_student_path(student.id), class:'student-name' do %>
                <div class='student-info'>
                  <h4 class='student-name'>
@@ -51,7 +51,7 @@
         </div>
         <div class='list'>
          <% @students.each do |student| %>
-            <% if student.school_year_id == 1 && student.school_class_id == 2 %>
+            <% if student.school_year == 1 && student.school_class == 2 %>
              <%= link_to edit_student_path(student.id), class:'student-name' do %>
                <div class='student-info'>
                  <h4 class='student-name'>
@@ -64,7 +64,7 @@
         </div>
         <div class='list'>
          <% @students.each do |student| %>
-            <% if student.school_year_id == 1 && student.school_class_id == 3 %>
+            <% if student.school_year == 1 && student.school_class == 3 %>
              <%= link_to edit_student_path(student.id), class:'student-name' do %>
                <div class='student-info'>
                  <h4 class='student-name'>
@@ -92,7 +92,7 @@
      <div class="class-list">  
         <div class='list'>
          <% @students.each do |student| %>
-            <% if (student.school_year_id == 2) && (student.school_class_id == 1) %> 
+            <% if (student.school_year == 2) && (student.school_class == 1) %> 
              <%= link_to edit_student_path(student.id), class:'student-name' do %>
                <div class='student-info'>
                  <h4 class='student-name'>
@@ -105,7 +105,7 @@
         </div>
         <div class='list'>
          <% @students.each do |student| %>
-            <% if student.school_year_id == 2 && student.school_class_id == 2 %>
+            <% if student.school_year == 2 && student.school_class == 2 %>
              <%= link_to edit_student_path(student.id), class:'student-name' do %>
                <div class='student-info'>
                  <h4 class='student-name'>
@@ -118,7 +118,7 @@
         </div>
         <div class='list'>
          <% @students.each do |student| %>
-            <% if student.school_year_id == 2 && student.school_class_id == 3 %>
+            <% if student.school_year == 2 && student.school_class == 3 %>
              <%= link_to edit_student_path(student.id), class:'student-name' do %>
                <div class='student-info'>
                  <h4 class='student-name'>
@@ -146,7 +146,7 @@
      <div class="class-list">  
         <div class='list'>
          <% @students.each do |student| %>
-            <% if (student.school_year_id == 3) && (student.school_class_id == 1) %> 
+            <% if (student.school_year == 3) && (student.school_class == 1) %> 
              <%= link_to edit_student_path(student.id), class:'student-name' do %>
                <div class='student-info'>
                  <h4 class='student-name'>
@@ -159,7 +159,7 @@
         </div>
         <div class='list'>
          <% @students.each do |student| %>
-            <% if student.school_year_id == 3 && student.school_class_id == 2 %>
+            <% if student.school_year == 3 && student.school_class == 2 %>
              <%= link_to edit_student_path(student.id), class:'student-name' do %>
                <div class='student-info'>
                  <h4 class='student-name'>
@@ -172,7 +172,7 @@
         </div>
         <div class='list'>
          <% @students.each do |student| %>
-            <% if student.school_year_id == 3 && student.school_class_id == 3 %>
+            <% if student.school_year == 3 && student.school_class == 3 %>
              <%= link_to edit_student_path(student.id), class:'student-name' do %>
                <div class='student-info'>
                  <h4 class='student-name'>
@@ -200,7 +200,7 @@
      <div class="class-list">  
         <div class='list'>
          <% @students.each do |student| %>
-            <% if (student.school_year_id == 4) && (student.school_class_id == 1) %> 
+            <% if (student.school_year == 4) && (student.school_class == 1) %> 
              <%= link_to edit_student_path(student.id), class:'student-name' do %>
                <div class='student-info'>
                  <h4 class='student-name'>
@@ -213,7 +213,7 @@
         </div>
         <div class='list'>
          <% @students.each do |student| %>
-            <% if student.school_year_id == 4 && student.school_class_id == 2 %>
+            <% if student.school_year == 4 && student.school_class == 2 %>
              <%= link_to edit_student_path(student.id), class:'student-name' do %>
                <div class='student-info'>
                  <h4 class='student-name'>
@@ -226,7 +226,7 @@
         </div>
         <div class='list'>
          <% @students.each do |student| %>
-            <% if student.school_year_id == 4 && student.school_class_id == 3 %>
+            <% if student.school_year == 4 && student.school_class == 3 %>
              <%= link_to edit_student_path(student.id), class:'student-name' do %>
                <div class='student-info'>
                  <h4 class='student-name'>
@@ -254,7 +254,7 @@
      <div class="class-list">  
         <div class='list'>
          <% @students.each do |student| %>
-            <% if (student.school_year_id == 5) && (student.school_class_id == 1) %> 
+            <% if (student.school_year == 5) && (student.school_class == 1) %> 
              <%= link_to edit_student_path(student.id), class:'student-name' do %>
                <div class='student-info'>
                  <h4 class='student-name'>
@@ -267,7 +267,7 @@
         </div>
         <div class='list'>
          <% @students.each do |student| %>
-            <% if student.school_year_id == 5 && student.school_class_id == 2 %>
+            <% if student.school_year == 5 && student.school_class == 2 %>
              <%= link_to edit_student_path(student.id), class:'student-name' do %>
                <div class='student-info'>
                  <h4 class='student-name'>
@@ -280,7 +280,7 @@
         </div>
         <div class='list'>
          <% @students.each do |student| %>
-            <% if student.school_year_id == 5 && student.school_class_id == 3 %>
+            <% if student.school_year == 5 && student.school_class == 3 %>
              <%= link_to edit_student_path(student.id), class:'student-name' do %>
                <div class='student-info'>
                  <h4 class='student-name'>
@@ -308,7 +308,7 @@
      <div class="class-list">  
         <div class='list'>
          <% @students.each do |student| %>
-            <% if (student.school_year_id == 6) && (student.school_class_id == 1) %> 
+            <% if (student.school_year == 6) && (student.school_class == 1) %> 
              <%= link_to edit_student_path(student.id), class:'student-name' do %>
                <div class='student-info'>
                  <h4 class='student-name'>
@@ -321,7 +321,7 @@
         </div>
         <div class='list'>
          <% @students.each do |student| %>
-            <% if student.school_year_id == 6 && student.school_class_id == 2 %>
+            <% if student.school_year == 6 && student.school_class == 2 %>
              <%= link_to edit_student_path(student.id), class:'student-name' do %>
                <div class='student-info'>
                  <h4 class='student-name'>
@@ -334,7 +334,7 @@
         </div>
         <div class='list'>
          <% @students.each do |student| %>
-            <% if student.school_year_id == 6 && student.school_class_id == 3 %>
+            <% if student.school_year == 6 && student.school_class == 3 %>
              <%= link_to edit_student_path(student.id), class:'student-name' do %>
                <div class='student-info'>
                  <h4 class='student-name'>
