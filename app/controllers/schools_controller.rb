@@ -5,6 +5,4 @@ class SchoolsController < ApplicationController
     @nursing_teacher = NursingTeacher.find(current_nursing_teacher.id)
     @students = Student.all.order(:number)
   end
-  
-  
 end

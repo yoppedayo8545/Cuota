@@ -1,7 +1,15 @@
 <canvas id="canvas"></canvas>
 
-<div class='search-bar-contents-devise'>
-  <%= link_to image_tag('cuota-sample.png', class:"cuota-icon-devise"), "/" %>
+<header class='top-page-header'>
+  <div class='search-bar-contents'>
+    <div class="icon-box">
+      <%= link_to image_tag('cuota-sample.png', class:"cuota-icon"), "/" %>
+    </div>
+  </div> 
+</header>
+
+<div class="title">
+  <h1>ログイン</h1>
 </div>
 
 <%= render "devise/shared/error_messages", resource: resource %>
@@ -9,7 +17,7 @@
 <div class="box-session">
   <div class="box-inner">
     <%= form_for(resource, model: @school_teacher, as: resource_name, url: session_path(resource_name), method: :post ) do |f| %>
-    <h2>ログイン</h2>
+    
 
  <div class="box-email">
      <div class="a-row">
@@ -34,33 +42,39 @@
       </div>
           <%= f.password_field :password, autocomplete: "current-password" %>
           <% if @minimum_password_length %>
-             <em>(<%= @minimum_password_length %> 文字以上で入力してください)</em>
+             <em>注：(<%= @minimum_password_length %> 文字以上で入力してください)</em>
         <% end %><br />
     </div>
 
     <div class="box-password_confirmation">
-    <div class="a-row">
+      <div class="a-row">
         <div class="column-left">
-      <%= f.label :password_confirmation, "パスワード確認用" %>
+          <%= f.label :password_confirmation, "パスワード確認用" %>
+        </div>
+        <div class="column-right">
+          <span class="mandatory">必須</span>
+        </div>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
       </div>
-       <div class="column-right">
-      <span class="mandatory">必須</span>
-      </div>
-      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
     </div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="remember">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember, "ログインしたままにする" %>
+      <% if devise_mapping.rememberable? %>
+        <div class="remember">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember, "ログインしたままにする" %>
+        </div>
+      <% end %>
+
+    <div class="box-login">
+      <%= f.submit "ログイン" %>
     </div>
+  
+  <%= render "devise/shared/links" %>
+  
   <% end %>
 
-  <div class="box-login">
-    <%= f.submit "ログイン" %>
   </div>
-  <%= render "devise/shared/links" %>
-<% end %>
+</div>
 
 <script>
 

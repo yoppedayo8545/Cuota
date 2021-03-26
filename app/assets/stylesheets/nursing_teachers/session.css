@@ -1,13 +1,9 @@
 .box-session {
-  width: 350px;
-  height: 40vh;
+  width:400px;
+  height: 350px;
   margin: 20px auto 0;
+  padding: 20px;
   border-radius: 4px;
   border: 1px #ddd solid;
-}
-
-.cuota-icon-devise {
-  width: 10vw;
-  display: block;
-  margin: 0 auto;
+  box-shadow: 4px 4px 5px #666666;
 }

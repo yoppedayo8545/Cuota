@@ -9,9 +9,6 @@ class NursingTeacher < ApplicationRecord
     validates :first_name
   end
 
-  with_options numericality: { other_than: 1 } do
-    validates :school_id
-  end
 
   has_many :students
 

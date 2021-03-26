@@ -4,7 +4,7 @@ class SchoolClass < ActiveHash::Base
     { id: 2, name: '2組' },
     { id: 3, name: '3組' },
     { id: 4, name: '4組' },
-    { id: 5, name: '5組' },
+    { id: 5, name: '5組' }
   ]
 
   include ActiveHash::Associations

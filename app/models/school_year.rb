@@ -5,7 +5,7 @@ class SchoolYear < ActiveHash::Base
     { id: 3, name: '3年生' },
     { id: 4, name: '4年生' },
     { id: 5, name: '5年生' },
-    { id: 6, name: '6年生' },
+    { id: 6, name: '6年生' }
   ]
 
   include ActiveHash::Associations

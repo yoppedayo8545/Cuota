@@ -9,13 +9,16 @@
 
 .search-bar-contents {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   height: 50px;
 }
 
+.search-form {
+  margin: 0 0 0 auto;
+}
+
 .cuota-icon {
-  width: 10vw;
+  width: 150px;
 }
 
 .search-form {
@@ -77,8 +80,8 @@
   margin: 5px 0;
   display: inline-block;
   font-size: 40px;
+  position: relative;
 }
-
 
 .user-content {
   width: 510px;
@@ -136,7 +139,7 @@ li {
 }
 
 .icon-box {
-  width: 50vw;
+  width: 150px;
 }
 
 .class-list {

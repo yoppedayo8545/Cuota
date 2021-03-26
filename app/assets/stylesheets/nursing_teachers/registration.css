@@ -6,28 +6,30 @@
 
 .box, .box-edit {
   width: 350px;
-  height: 70vh;
-  margin: 20px auto 0;
+  height: 530px;
+  margin: 0 auto ;
+  padding: 20px;
   border-radius: 4px;
   border: 1px #ddd solid;
+  box-shadow: 4px 4px 5px #666666;
 }
 
 .box-edit {
-  height: 82vh;
+  height: 570px;
 }
 
 .box-inner {
-  padding: 20px 26px;
+  width: 100%;
 }
 
 h1 {
   text-align: center;
-  font-weight: 400;
   font-size: 28px;
-  line-height: 1.2;
   margin-bottom: 10px;
-  padding-bottom: 4px;
-  color: #111111;
+  position: relative;
+  color: #6eb0f9;
+  line-height: 1.4;
+  -webkit-box-reflect: below -10px -webkit-linear-gradient(top,rgba(0,0,0,0),rgba(0,0,0,0) 10%,rgba(0, 0, 0, 0.6));
 }
 
 h3 {
@@ -35,13 +37,13 @@ h3 {
   font-size: 12px;
 }
 
+em {
+  font-size: 13px;
+}
+
 .box-last_name, .box-first_name,
 .box-email {
   margin-bottom: 20px;
-}
-
-.box-password {
-  margin-bottom: 22px;
 }
 
 .a-row {
@@ -51,19 +53,31 @@ h3 {
 .box-last_name label, .box-first_name label,
 .box-email label, .box-password label,
 .box-password_confirmation label, .box-school_id label {
-  font-weight: 700;
-  font-size: 13px;
+  width: 20%;
+  font-size: larger;
   padding-left: 2px;
   padding-bottom: 2px;
 }
 
 .box-last_name input[type="text"], .box-first_name input[type="text"],
-.box-email input[type="email"], .box-password input[type="password"],
-.box-password_confirmation input[type="password"] {
+.box-email input[type="email"] {
+  font-size: larger;
   border-style: none;
   box-sizing: border-box;
   width: 100%;
   height: 31px;
+  border: 1px solid #a6a6a6;
+  box-shadow: 0 1px 0 rgba(0,0,0,.07) inset;
+  border-radius: 3px;
+  padding: 0 7px;
+}
+
+.box-password input[type="password"],
+.box-password_confirmation input[type="password"] {
+  border-style: none;
+  box-sizing: border-box;
+  width: 100%;
+  height: 22px;
   border: 1px solid #a6a6a6;
   box-shadow: 0 1px 0 rgba(0,0,0,.07) inset;
   border-radius: 3px;
@@ -88,16 +102,18 @@ h3 {
 
 .box-login {
   margin-bottom: 26px;
+  text-align: center;
 }
 
 .box-login input[type="submit"] {
   border-style: none;
-  width: 100%;
+  font-size: larger;
+  width: 50%;
   height: 31px;
   background: linear-gradient(to bottom,#f7dfa5,#f0c14b);
   border-radius: 3px;
   border: 1px #a88734 solid;
-  margin-top: 50px;
+  margin-top: 10px;
 }
 
 .box-login input[type="submit"]:hover {
@@ -125,7 +141,6 @@ h3 {
 
 .back {
   text-align: center;
-  margin-bottom: 5vh;
 }
 
 .search-bar-contents-devise {
