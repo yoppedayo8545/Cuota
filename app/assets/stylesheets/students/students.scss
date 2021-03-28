@@ -68,11 +68,13 @@ html, body {
   background-color: white;
   border-radius: 20px 0;
   border: 1px #ddd solid;
-  text-align: center;
+  padding: 5px 0 5px 10px;
   box-shadow: 4px 4px 5px #666666;
 }
 
 .student-name h4 {
+
+  font-size: medium;
   text-decoration: none;
   color:#00BCD4;
 }
@@ -112,6 +114,7 @@ ul.year-list li::before {
 
 .status-column {
   display: flex;
+  height: 100%;
 }
 
 .box-date input[type="date"] {
@@ -134,10 +137,9 @@ ul.year-list li::before {
 }
 
 .box-inner-edit input[type="text"] {
-  font-size: larger;
   border-style: none;
   box-sizing: border-box;
-  width: 86%;
+  width: 70%;
   height: 31px;
   border: 1px solid #a6a6a6;
   box-shadow: 0 1px 0 rgba(0,0,0,.07) inset;
@@ -147,10 +149,9 @@ ul.year-list li::before {
 
 .medicine-lists input[type="text"],
 .anaphylaxis-lists input[type="text"] {
-  font-size: larger;
   border-style: none;
   box-sizing: border-box;
-  width: 89%;
+  width: 82%;
   height: 31px;
   border: 1px solid #a6a6a6;
   box-shadow: 0 1px 0 rgba(0,0,0,.07) inset;
@@ -185,10 +186,8 @@ ul.year-list li::before {
 
 .box-student-edit {
   width: 70%;
+  height: 638px;
   padding: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   box-shadow: 4px 4px 10px #666666;
  }
 
@@ -199,14 +198,13 @@ ul.year-list li::before {
 }
 
 .student-memo input[type="submit"] {
-  font-size: larger;
   border-style: none;
   width: 100px;
   height: 31px;
   background: linear-gradient(to bottom,#f7dfa5,#f0c14b);
   border-radius: 3px;
   border: 1px #a88734 solid;
-  margin-top: 20px;
+  margin-top: 10px;
 }
   
 .student-memo input[type="submit"]:hover {
@@ -222,7 +220,8 @@ ul.year-list li::before {
 .student-school-status h4 {
   font-size: 18px;
   width: 100%;
-  padding: 5px;
+  height: 100%;
+  padding: 8px 0 0 5px;
 }
 
 .status-column-left {
@@ -253,7 +252,8 @@ ul.year-list li::before {
 .student-status h4 {
   font-size: 18px;
   width: 100%;
-  padding: 5px;
+  height: 100%;
+  padding: 8px 0 0 5px;
 }
 
 h4 {
