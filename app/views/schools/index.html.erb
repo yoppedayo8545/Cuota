@@ -1,4 +1,6 @@
-<canvas id="canvas"></canvas>
+<% unless @nursing_teacher.image.attached? %>
+  <canvas id="canvas"></canvas>
+<% end %>
 
 <%= image_tag @nursing_teacher.image, class: 'image-icon' if @nursing_teacher.image.attached? %>
 
