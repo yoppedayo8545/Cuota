@@ -1,0 +1,281 @@
+<canvas id="canvas"></canvas>
+
+<header class='top-page-header'>
+  <div class='search-bar-contents'>
+   <div class="icon-box">
+    <%= link_to image_tag('cuota-sample.png', class:"cuota-icon"), "/" %>
+   </div> 
+  </div>
+</header>
+
+
+  <%= render "devise/shared/error_messages", resource: @student %> 
+
+  <div class="title-memo">
+    <h1>生徒メモ</h1>
+  </div>
+    <div class='student-memo-box'>
+
+    <div class="student-edit-box">
+      <div class="student-school-status">
+
+        <div class="status-column">
+          <div class="status-column-left">
+            <h4>学校名
+          </div>
+          <div class="status-column-right">
+            <%= @student.school.name %>
+          </div>
+          </h4>
+        </div>
+
+
+        <div class="status-column">
+          <div class="status-column-left">
+            <h4>氏名
+          </div>
+          <div class="status-column-right">
+            <%= @student.last_name  %> <%= @student.first_name %>
+          </div>
+          </h4>
+        </div>
+
+        <div class="status-column">
+          <div class="status-column-left">
+            <h4>フリガナ
+          </div>
+          <div class="status-column-right">
+            <%= @student.last_kana  %> <%= @student.first_kana %>
+          </div>
+          </h4>
+        </div>
+      </div>
+
+      <div class="student-status">
+
+      <div class="status-column">
+          <div class="status-column-left">
+            <h4>学年
+          </div>
+          <div class="status-column-right">
+            <%= @student.school_year_id %>年生
+          </div>
+          </h4>
+        </div>
+
+        <div class="status-column">
+          <div class="status-column-left">
+            <h4>クラス
+          </div>
+          <div class="status-column-right">
+            <%= @student.school_class_id %>組
+          </div>
+          </h4>
+        </div>
+          
+        <div class="status-column">
+          <div class="status-column-left">
+            <h4>出席番号
+          </div>
+          <div class="status-column-right">
+            <%= @student.number %>番
+          </div>
+          </h4>
+        </div>
+          
+        <div class="status-column">
+          <div class="status-column-left">
+            <h4>性別
+          </div>
+          <div class="status-column-right">
+            <%= @student.gender.name %>
+          </div>
+          </h4>
+        </div>
+          
+        <div class="status-column">
+          <div class="status-column-left">
+            <h4>誕生日
+          </div>
+          <div class="status-column-right">
+            <%= @student.date %>
+          </div>
+          </h4>
+        </div>
+        
+        <div class="status-column">
+          <div class="status-column-left">
+            <h4>兄弟
+          </div>
+          <div class="status-column-right">
+            <%= @student.brother %>
+          </div>
+          </h4>
+        </div>
+      
+      </div>
+    </div>
+    
+    <script>
+      function connect_text( text_id, ischecked ) {
+        if( ischecked == true ) {
+           document.getElementById(text_id).disabled = false;
+        }
+        else {
+           document.getElementById(text_id).disabled = true;
+        }
+      }
+    </script>
+
+
+      <div class="box-student-edit">
+      
+        <%= form_with model: @student, url: student_path(@student.id), local: true do |f| %>
+              
+        <div class="box-inner-edit">
+          <div class="column-memo">
+            <%= f.label :allergy, "アレルギー" %>
+            <%= f.text_field :allergy, autofocus: true, placeholder: "アレルギー名 ", autocomplete: "allergy" %>
+          </div>
+        </div>
+
+        <div class="medicine-lists">
+           <%= f.label :medicine, "エピペン・内服薬" %><br>
+           <span><input type="checkbox" name="scb1" value="on"
+              onclick="connect_text('textforscb1',this.checked);">有り</span>：
+           <%= f.text_field :medicine, placeholder: "保管場所", autocomplete: "medicine" , id:"textforscb1", disabled: true %><br>
+           <span><input type="checkbox" name="scb2" value="on">無し</span>
+        </div>
+
+        <div class="anaphylaxis-lists">
+           <%= f.label :anaphylaxis, "アナフィラキシー" %><br>
+           <span><input type="checkbox" name="scb3" value="on"
+              onclick="connect_text('textforscb3',this.checked);">有り</span>：
+           <%= f.text_field :anaphylaxis, placeholder: "いつ・どこで", autocomplete: "anaphylaxis" , id:"textforscb3", disabled: true %><br>
+           <span><input type="checkbox" name="scb4" value="on">無し</span>
+        </div>
+
+        <div class="tab-wrap">
+          <input id="TAB-01" type="radio" name="TAB" class="tab-switch" checked="checked" /><label class="tab-label" for="TAB-01">特記事項</label>
+            <div class="tab-content">
+              <p><%= f.label :allergy_other, "特記事項" %></p><br>
+              <p><%= f.text_area :allergy_other, autofocus: true, placeholder: "例)  アトピー性皮膚炎、アレルギー性結膜炎 ", autocomplete: "allergy", size: "100x5" %></p>
+            </div>
+          <input id="TAB-02" type="radio" name="TAB" class="tab-switch" /><label class="tab-label" for="TAB-02">特別支援</label>
+          <div class="tab-content">
+            <p><%= f.label :special_support, "特別支援" %></p><br>
+            <p><%= f.text_area :special_support, placeholder: "例)  寝かしつけは抱っこ", autocomplete: "special_support", size: "100x5" %></p>
+          </div>
+          <input id="TAB-03" type="radio" name="TAB" class="tab-switch" /><label class="tab-label" for="TAB-03">担任メモ</label>
+            <div class="tab-content">
+              <p><%= f.label :other_ht, "担任メモ" %></p><br>
+              <p><%= f.text_area :other_ht, placeholder: "例)  ワンワンが好き", autocomplete: "other_ht", size: "100x5" %></p>
+            </div>
+          <input id="TAB-04" type="radio" name="TAB" class="tab-switch" /><label class="tab-label" for="TAB-04">養護教諭メモ</label>
+            <div class="tab-content">
+              <p><%= f.label :other_nt, "養護教諭メモ" %></p><br>
+              <p><%= f.text_area :other_nt, placeholder: "例)  なんでも口に入れる", autocomplete: "school_year", size: "100x5"  %></p>
+            </div>
+        </div>
+
+        <div class="student-memo">
+          <%= f.submit "登録" %>
+        </div>
+
+        <div class='back'>
+          <%= link_to "戻る", root_path %>
+        </div>                            
+
+        <% end %>
+      
+      </div>      
+      
+    </div>
+
+        
+      
+
+    
+
+  
+
+
+<script>
+var livePatern = {
+  canvas: null,
+  context: null,
+  cols: 0,
+  rows: 0,
+  colors: [252, 251, 249, 248, 241, 240],
+  triangleColors: [],
+  destColors: [],
+  
+  init: function(){
+    this.canvas = document.getElementById('canvas');
+    this.context = this.canvas.getContext('2d');
+    this.cols = Math.floor(document.body.clientWidth / 24);
+    this.rows = Math.floor(document.body.clientHeight / 24) + 1;
+    
+    this.canvas.width = document.body.clientWidth;
+    this.canvas.height = document.body.clientHeight;
+    
+    this.drawBackground();
+    this.animate();
+  },
+  
+  drawTriangle: function(x, y, color, inverted){
+    inverted = inverted == undefined ? false : inverted;
+
+    this.context.beginPath();
+    this.context.moveTo(x, y);
+    this.context.lineTo(inverted ? x - 22 : x + 22, y + 11);
+    this.context.lineTo(x, y + 22);
+    this.context.fillStyle = "rgb("+color+","+color+","+color+")";
+    this.context.fill();
+    this.context.closePath();
+  },
+  
+  getColor: function(){    
+    return this.colors[(Math.floor(Math.random() * 6))];
+  },
+  
+  drawBackground: function(){
+    var eq = null;
+    var x = this.cols;
+    var destY = 0;
+    var color, y;
+    
+    while(x--){
+      eq = x % 2;
+      y = this.rows;
+
+      while(y--){
+        destY = Math.round((y-0.5) * 24);
+
+        this.drawTriangle(x * 24 + 2, eq == 1 ? destY : y * 24, this.getColor());
+        this.drawTriangle(x * 24, eq == 1 ? destY  : y * 24, this.getColor(), true);
+      }
+    }
+  },
+  
+  animate: function(){
+    var me = this;
+
+    var x = Math.floor(Math.random() * this.cols);
+    var y = Math.floor(Math.random() * this.rows);
+    var eq = x % 2;
+
+    if (eq == 1) {
+      me.drawTriangle(x * 24, Math.round((y-0.5) * 24) , this.getColor(), true);
+    } else {
+      me.drawTriangle(x * 24 + 2, y * 24, this.getColor());
+    }
+
+    setTimeout(function(){    
+      me.animate.call(me);
+    }, 10);
+  },
+};
+
+!function(){livePatern.init();}()
+</script>

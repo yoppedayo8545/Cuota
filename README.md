@@ -65,11 +65,14 @@ Things you may want to cover:
 | first_name            | string       | null: false                    |
 | date                  | date         |                                |
 | school_year           | integer      | null: false                    |
-| class                 | string       | null: false                    |
+| school_class          | string       | null: false                    |
 | number                | integer      | null: false                    |
 | gender                | string       | null: false                    |
 | brother               | string       |                                |
-| allergy               | text         |                                |
+| allergy               | string       |                                |
+| medicine              | string       |                                |
+| anaphylaxis           | string       |                                |
+| allergy_other         | text         |                                |
 | special_support       | text         |                                |
 | other_ht              | text         |                                |
 | other_nt              | text         |                                |

@@ -10,7 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_16_113609) do
+ActiveRecord::Schema.define(version: 2021_03_26_101331) do
+
+  create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
 
   create_table "nursing_teachers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "last_name", null: false
@@ -23,8 +44,36 @@ ActiveRecord::Schema.define(version: 2021_03_16_113609) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "image_icon"
     t.index ["email"], name: "index_nursing_teachers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_nursing_teachers_on_reset_password_token", unique: true
   end
 
+  create_table "students", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "last_name", null: false
+    t.string "first_name", null: false
+    t.string "last_kana", null: false
+    t.string "first_kana", null: false
+    t.date "date"
+    t.integer "school_year_id", null: false
+    t.integer "school_class_id", null: false
+    t.integer "number", null: false
+    t.integer "gender_id", null: false
+    t.string "brother"
+    t.string "allergy"
+    t.string "medicine"
+    t.string "anaphylaxis"
+    t.text "allergy_other"
+    t.text "special_support"
+    t.text "other_ht"
+    t.text "other_nt"
+    t.integer "school_id", null: false
+    t.bigint "nursing_teacher_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["nursing_teacher_id"], name: "index_students_on_nursing_teacher_id"
+  end
+
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "students", "nursing_teachers"
 end

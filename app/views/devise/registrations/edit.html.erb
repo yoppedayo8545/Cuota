@@ -1,34 +1,44 @@
-<div class='search-bar-contents-devise'>
-  <%= link_to image_tag('cuota-sample.png', class:"cuota-icon-devise"), "/" %>
+<canvas id="canvas"></canvas>
+
+<header class='top-page-header'>
+  <div class='search-bar-contents'>
+    <div class="icon-box">
+      <%= link_to image_tag('cuota-sample.png', class:"cuota-icon"), "/" %>
+    </div>
+  </div> 
+</header>
+
+<div class="title">
+  <h1>管理者情報編集</h1>
 </div>
 
 <%= render "devise/shared/error_messages", resource: resource %>
+
+
+
 <div class="box-edit">
   <div class="box-inner">
-    <%= form_for(resource, model: @school_teacher, as: resource_name, url: registration_path(resource_name), method: :put ) do |f| %>
-    <h1>編集</h1>
 
-  <div class="box-last_name">
-      <div class="a-row">
-        <div class="column-left">
-      <%= f.label :last_name, "苗字" %>
-      </div>
-       <div class="column-right">
-      <span class="mandatory">必須</span>
-      </div>
-      <%= f.text_field :last_name, autofocus: true, placeholder: "例)  田中 ", autocomplete: "last_name" %>
-    </div>
+    <%= form_for(resource, model: @school_teacher, as: resource_name, url: registration_path(resource_name), method: :put ) do |f| %>
   
-    <div class="box-first_name">
+    <div class="box-last_name">
      <div class="a-row">
-        <div class="column-left">
-      <%= f.label :first_name, "名前" %>
+       <div class="column-left">
+         <%= f.label :last_name, "氏名" %>
+       </div>
+       <div class="column-right">
+        <span class="mandatory">必須</span>
+       </div>
       </div>
-        <div class="column-right">
-      <span class="mandatory">必須</span>
+      <div class="a-row-full-name-field">
+       <div class="column-left">
+        <%= f.text_field :last_name, autofocus: true, placeholder: "例)  田中 ", autocomplete: "last_name" %>
+       </div>
+      <div class="column-right"> 
+        <%= f.text_field :first_name, placeholder: "例)  太郎 ", autocomplete: "first_name" %>
       </div>
-      <%= f.text_field :first_name, placeholder: "例)  太郎 ", autocomplete: "first_name" %>
-    </div>
+     </div>
+   </div>
 
     <div class="box-school">
     <div class="a-row">
@@ -44,12 +54,13 @@
     <div class="box-email">
      <div class="a-row">
         <div class="column-left">
-      <%= f.label :email, "メールアドレス" %>
-      </div>
+          <%= f.label :email, "メールアドレス" %>
+        </div>
         <div class="column-right">
-      <span class="mandatory">必須</span>
-      </div>
+          <span class="mandatory">必須</span>
+        </div>
       <%= f.email_field :email, placeholder: "例)  tanaka@email ", autocomplete: "email" %>
+     </div>
     </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -61,26 +72,22 @@
       <div class="column-left">
       <%= f.label :password, "新しいパスワード" %>
       </div>
-      <div class="column-right">
-         <span class="mandatory">必須</span>
-      </div>
     </div>
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <em>(変更しない場合は空欄にしてください)</em><br/>
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> 文字以上で入力してください)</em>
-    <% end %>
+      <%= f.password_field :password, autocomplete: "new-password" %>
+      <em>注：変更しない場合は空欄にしてください</em><br/>
+   
+      <% if @minimum_password_length %>
+        <em>注：<%= @minimum_password_length %> 文字以上で入力してください</em>
+      <% end %>
   </div>
 
   <div class="box-password_confirmation">
     <div class="a-row">
         <div class="column-left">
-    <%= f.label :password_confirmation, "新しいパスワード確認用" %>
+          <%= f.label :password_confirmation, "新しいパスワード確認用" %>
+        </div>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
     </div>
-       <div class="column-right">
-      <span class="mandatory">必須</span>
-      </div>
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
   <div class="box-password_confirmation">
@@ -89,15 +96,21 @@
         <%= f.label :current_password, "現在のパスワード" %> 
       </div>
       <div class="column-right">
-      <span class="mandatory">必須</span>
+        <span class="mandatory">必須</span>
       </div>
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-    <em>(現在のパスワードをご入力ください)</em>
+      <%= f.password_field :current_password, autocomplete: "current-password" %>
+      <em>(現在のパスワードをご入力ください)</em>
+    </div>
+  </div>
+
+  <div>
+    <%= f.file_field :image %>
   </div>
 
   <div class="box-login">
     <%= f.submit "更新" %>
   </div>
+
 <% end %>
 
 <h3>アカウント削除の場合は<br>下記ボタンをクリックしてください</h3>
@@ -109,3 +122,85 @@
 <div class='back'>
   <%= link_to "戻る", :back %>
 </div>
+
+<script>
+
+var livePatern = {
+  canvas: null,
+  context: null,
+  cols: 0,
+  rows: 0,
+  colors: [252, 251, 249, 248, 241, 240],
+  triangleColors: [],
+  destColors: [],
+  
+  init: function(){
+    this.canvas = document.getElementById('canvas');
+    this.context = this.canvas.getContext('2d');
+    this.cols = Math.floor(document.body.clientWidth / 24);
+    this.rows = Math.floor(document.body.clientHeight / 24) + 1;
+    
+    this.canvas.width = document.body.clientWidth;
+    this.canvas.height = document.body.clientHeight;
+    
+    this.drawBackground();
+    this.animate();
+  },
+  
+  drawTriangle: function(x, y, color, inverted){
+    inverted = inverted == undefined ? false : inverted;
+
+    this.context.beginPath();
+    this.context.moveTo(x, y);
+    this.context.lineTo(inverted ? x - 22 : x + 22, y + 11);
+    this.context.lineTo(x, y + 22);
+    this.context.fillStyle = "rgb("+color+","+color+","+color+")";
+    this.context.fill();
+    this.context.closePath();
+  },
+  
+  getColor: function(){    
+    return this.colors[(Math.floor(Math.random() * 6))];
+  },
+  
+  drawBackground: function(){
+    var eq = null;
+    var x = this.cols;
+    var destY = 0;
+    var color, y;
+    
+    while(x--){
+      eq = x % 2;
+      y = this.rows;
+
+      while(y--){
+        destY = Math.round((y-0.5) * 24);
+
+        this.drawTriangle(x * 24 + 2, eq == 1 ? destY : y * 24, this.getColor());
+        this.drawTriangle(x * 24, eq == 1 ? destY  : y * 24, this.getColor(), true);
+      }
+    }
+  },
+  
+  animate: function(){
+    var me = this;
+
+    var x = Math.floor(Math.random() * this.cols);
+    var y = Math.floor(Math.random() * this.rows);
+    var eq = x % 2;
+
+    if (eq == 1) {
+      me.drawTriangle(x * 24, Math.round((y-0.5) * 24) , this.getColor(), true);
+    } else {
+      me.drawTriangle(x * 24 + 2, y * 24, this.getColor());
+    }
+
+    setTimeout(function(){    
+      me.animate.call(me);
+    }, 10);
+  },
+};
+
+!function(){livePatern.init();}()
+
+</script>

@@ -9,10 +9,13 @@ class NursingTeacher < ApplicationRecord
     validates :first_name
   end
 
-  with_options numericality: { other_than: 1 } do
-    validates :school_id
-  end
+
+  has_many :students
+  has_one_attached :image
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :school
+  belongs_to :school_year
+  belongs_to :school_class
+  belongs_to :gender
 end

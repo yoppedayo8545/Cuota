@@ -1,0 +1,370 @@
+// Place all the styles related to the students controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: none;
+}
+
+#canvas {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  opacity: 1;
+  z-index: -2;
+}
+
+.title {
+  margin: auto;
+  padding: auto 0;
+}
+
+.title-memo {
+  margin: 0 0 0 24vw;
+}
+
+.student-memo-box {
+  display: flex;
+  padding: 0 10vw;
+}
+
+.box-student {
+  width: 350px;
+  height: 615px;
+  margin: 20px auto 0;
+  padding: 20px;
+  border-radius: 4px;
+  border: 1px #ddd solid;
+  box-shadow: 4px 4px 5px #666666;
+}
+
+.year-box {
+  display: flex;
+}
+
+.school-year  {
+  color: #ddd;
+  font-size: 18px;
+  margin-bottom: 50px;
+  background:linear-gradient(transparent 70%, #FFFF00 0%);
+}
+
+.student-list {
+  display: flex;
+  justify-content: space-around;
+  padding-left: 10vw;
+  padding-right: 10vw;
+  position: relative;
+}
+
+.list {
+  width: 120px;
+  height: 150px;
+  margin-bottom: 10px;
+  overflow: scroll;
+  background-color: white;
+  border-radius: 20px 0;
+  border: 1px #ddd solid;
+  text-align: center;
+  box-shadow: 4px 4px 5px #666666;
+}
+
+.student-name h4 {
+  text-decoration: none;
+  color:#00BCD4;
+}
+
+.student-name h4:hover {
+  color:turquoise;
+}
+
+.student-name h4:active {
+  color:aquamarine;
+}
+
+ul.year-list {
+	padding:0.5em;
+	list-style-type:none;
+}
+
+ul.year-list li {
+  width: 80px;
+  font-weight: bold;
+  color: darkslategray;
+	position:relative;
+	padding: 0em 0.3em 0.3em 1.3em;
+}
+ul.year-list li::before {
+	position: absolute;
+	content: '';
+	display: block;
+	top: 0.5em;
+	left: 0;
+	width: 6px;
+	height: 6px;
+	border-right: 3px solid #00BCD4;
+	border-bottom: 3px solid #00BCD4;
+	transform: rotate(-45deg);
+}
+
+.status-column {
+  display: flex;
+}
+
+.box-date input[type="date"] {
+  margin-bottom: 10px;
+}
+
+
+
+.box-full-name input[type="text"], .box-full-name-kana input[type="text"],
+.box-number input[type="text"], .box-date input[type="date"] {
+  font-size: larger;
+  border-style: none;
+  box-sizing: border-box;
+  width: 100%;
+  height: 31px;
+  border: 1px solid #a6a6a6;
+  box-shadow: 0 1px 0 rgba(0,0,0,.07) inset;
+  border-radius: 3px;
+  padding: 0 7px;
+}
+
+.box-inner-edit input[type="text"] {
+  font-size: larger;
+  border-style: none;
+  box-sizing: border-box;
+  width: 86%;
+  height: 31px;
+  border: 1px solid #a6a6a6;
+  box-shadow: 0 1px 0 rgba(0,0,0,.07) inset;
+  border-radius: 3px;
+  padding: 0 7px;
+}
+
+.medicine-lists input[type="text"],
+.anaphylaxis-lists input[type="text"] {
+  font-size: larger;
+  border-style: none;
+  box-sizing: border-box;
+  width: 89%;
+  height: 31px;
+  border: 1px solid #a6a6a6;
+  box-shadow: 0 1px 0 rgba(0,0,0,.07) inset;
+  border-radius: 3px;
+  padding: 0 7px;
+}
+
+.a-row-full-name {
+  display: flex;
+  justify-content: space-between;
+}
+
+.a-row-full-name-field {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.medicine-lists, .anaphylaxis-lists {
+  margin-bottom: 10px;
+  font-size: larger;
+}
+
+.student-edit-box {
+  width: 30%;
+  padding-top: 50px;
+}
+
+.student-edit-box h4 {
+  border-radius: 4px;
+  border: 1px #ddd solid;
+}
+
+.box-student-edit {
+  width: 70%;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 4px 4px 10px #666666;
+ }
+
+.student-memo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.student-memo input[type="submit"] {
+  font-size: larger;
+  border-style: none;
+  width: 100px;
+  height: 31px;
+  background: linear-gradient(to bottom,#f7dfa5,#f0c14b);
+  border-radius: 3px;
+  border: 1px #a88734 solid;
+  margin-top: 20px;
+}
+  
+.student-memo input[type="submit"]:hover {
+  cursor: pointer;
+  background: #f0c14b;
+}
+
+.student-school-status {
+  width: 80%;
+  background-color: white;
+}
+
+.student-school-status h4 {
+  font-size: 18px;
+  width: 100%;
+  padding: 5px;
+}
+
+.status-column-left {
+  width: 35%;
+}
+
+.status-column-right {
+  width: 65%;
+  font-size: 18px;
+  font-weight: bold;
+  color: darkslategray;
+  border-radius: 4px;
+  border: 1px #ddd solid;
+  padding: 5px;
+}
+
+.box-inner-edit label, .medicine-lists label,
+.anaphylaxis-lists label {
+  width: 20%;
+  background:linear-gradient(transparent 70%, #FFFF00 0%);
+}
+
+.student-status {
+  width: 80%;
+  background-color: white;
+}
+
+.student-status h4 {
+  font-size: 18px;
+  width: 100%;
+  padding: 5px;
+}
+
+h4 {
+  color: darkslategray;
+}
+
+.class-box {
+  display: flex;
+}
+
+.class-name {
+  margin-bottom: 120px;
+  display: block;
+}
+
+.box-inner-edit {
+  margin-bottom: 10px;
+  font-size: larger;
+}
+
+.column-memo-area {
+  position: absolute;
+  display: none;
+}
+
+.tab-wrap {
+	background: White;
+	box-shadow: 0 0 5px rgba(0,0,0,.1);
+	display: flex;
+	flex-wrap: wrap;
+	overflow: hidden;
+	padding: 0 0 20px;
+}
+
+.tab-label {
+	color: Gray;
+	cursor: pointer;
+	flex: 1;
+	font-weight: bold;
+	order: -1;
+	padding: 12px 24px;
+	position: relative;
+	text-align: center;
+	transition: cubic-bezier(0.4, 0, 0.2, 1) .2s;
+	user-select: none;
+	white-space: nowrap;
+	-webkit-tap-highlight-color: transparent;
+}
+
+.tab-label:hover {
+	background: rgba(0, 191, 255,.1);
+}
+
+.tab-switch:checked + .tab-label {
+	color: #6eb0f9;
+}
+
+.tab-label::after {
+	background: #6eb0f9;
+	bottom: 0;
+	content: '';
+	display: block;
+	height: 3px;
+	left: 0;
+	opacity: 0;
+	pointer-events: none;
+	position: absolute;
+	transform: translateX(100%);
+	transition: cubic-bezier(0.4, 0, 0.2, 1) .2s 80ms;
+	width: 100%;
+	z-index: 1;
+}
+
+.tab-switch:checked ~ .tab-label::after {
+	transform: translateX(-100%);
+}
+
+.tab-switch:checked + .tab-label::after {
+	opacity: 1;
+	transform: translateX(0);
+}
+
+.tab-content {
+	height:0;
+	opacity:0;
+	padding: 0 20px;
+	pointer-events:none;
+	transform: translateX(-30%);
+	transition: transform .3s 80ms, opacity .3s 80ms;
+	width: 100%;
+}
+
+.tab-switch:checked ~ .tab-content {
+	transform: translateX(30%);
+}
+
+.tab-switch:checked + .tab-label + .tab-content {
+	height: auto;
+	opacity: 1;
+	order: 1;
+	pointer-events:auto;
+	transform: translateX(0);
+}
+
+.tab-wrap::after {
+	content: '';
+	height: 20px;
+	order: -1;
+	width: 100%;
+}
+
+.tab-switch {
+	display: none;
+}
