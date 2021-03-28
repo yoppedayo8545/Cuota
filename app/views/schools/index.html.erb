@@ -1,5 +1,7 @@
 <canvas id="canvas"></canvas>
 
+<%= image_tag @nursing_teacher.image, class: 'image-icon' if @nursing_teacher.image.attached? %>
+
 <header class='top-page-header'>
   <div class='search-bar-contents'>
     <%= link_to image_tag('cuota-sample.png', class:"cuota-icon"), "/" %>
@@ -14,7 +16,6 @@
           <li class='school-name'><%= @nursing_teacher.school.name %></li><br>
           <li><%= link_to "#{current_nursing_teacher.last_name} 先生", edit_nursing_teacher_registration_path, class: "user-name" %></li>
           <li class='hello'><%= "こんにちは" %></li>
-          <li><img src= "/user_images/#{@nursing_teacher.image_icon}"></li>
         </ul>
         <ul class='user-content'>  
           <li class='content-edit'><%= link_to '生徒新規登録', new_student_path, class: "new-student" %></li>
