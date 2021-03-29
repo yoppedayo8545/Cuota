@@ -33,7 +33,7 @@ html, body {
 
 .box-student {
   width: 350px;
-  height: 615px;
+  height: 645px;
   margin: 20px auto 0;
   padding: 20px;
   border-radius: 4px;
@@ -73,18 +73,20 @@ html, body {
 }
 
 .student-name h4 {
-
   font-size: medium;
+  font-weight: bold;
   text-decoration: none;
   color:#00BCD4;
 }
 
 .student-name h4:hover {
   color:turquoise;
+  text-decoration: none;
 }
 
 .student-name h4:active {
   color:aquamarine;
+  text-decoration: none;
 }
 
 ul.year-list {
@@ -121,11 +123,13 @@ ul.year-list li::before {
   margin-bottom: 10px;
 }
 
-
+.student-number {
+  width: 100%;
+  margin-bottom: 10px;
+}
 
 .box-full-name input[type="text"], .box-full-name-kana input[type="text"],
 .box-number input[type="text"], .box-date input[type="date"] {
-  font-size: larger;
   border-style: none;
   box-sizing: border-box;
   width: 100%;
@@ -133,7 +137,7 @@ ul.year-list li::before {
   border: 1px solid #a6a6a6;
   box-shadow: 0 1px 0 rgba(0,0,0,.07) inset;
   border-radius: 3px;
-  padding: 0 7px;
+  padding: 0 7px ;
 }
 
 .box-inner-edit input[type="text"] {
@@ -166,7 +170,7 @@ ul.year-list li::before {
 
 .a-row-full-name-field {
   display: flex;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .medicine-lists, .anaphylaxis-lists {
