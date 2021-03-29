@@ -115,6 +115,12 @@ li {
   font-family: 'Avenir','Helvetica Neue','Helvetica','Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic'
 } 
 
+.user-name:hover {
+  text-decoration: none;
+  color: slategray;
+  opacity       : 0.8; 
+}
+
 .new-student, .edit, .logout {
   text-align: center;
   text-decoration: none;
@@ -132,6 +138,7 @@ li {
 .logout:hover {
   box-shadow    : none;
   opacity       : 0.8; 
+  text-decoration: none;
 }
 
 .form-group {
