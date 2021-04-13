@@ -63,3 +63,6 @@ gem 'mini_magick'
 gem 'image_processing', '~> 1.2'
 gem 'jquery-rails'
 gem 'jquery-turbolinks'
+group :production do
+  gem 'unicorn', '5.4.1'
+end
