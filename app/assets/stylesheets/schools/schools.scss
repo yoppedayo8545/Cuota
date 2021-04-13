@@ -64,7 +64,6 @@
 }
 
 .user-contents {
-  margin-right: 30px;
   display: flex;
   justify-content: space-between;
 }
@@ -84,32 +83,25 @@
   position: relative;
 }
 
-.user-content {
-  width: 510px;
-  margin-top: 15px;
-  text-align: right;
-  font-size: larger;
-  display: flex;
-  justify-content: space-around;
+.btn-group {
+  width: 100%;
+  height: 100%;
+  margin-top: 10px;
   font-family: 'Avenir','Helvetica Neue','Helvetica','Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic';
   cursor: pointer;
+}
+
+.btn-group-top {
+  display: flex;
+  margin: 10px 10vw 10px;
 }
 
 li {
   display: inline-block;
 }
 
-.content-edit {
-  width: 180px;
-}
-
-.content-logout {
-  width: 150px;
-}
-
 .user-name {
   width: 20vw;
-  text-decoration: none;
   color: slategray;
   font-size: 30px;
   font-family: 'Avenir','Helvetica Neue','Helvetica','Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic'
@@ -121,24 +113,20 @@ li {
   opacity       : 0.8; 
 }
 
-.new-student, .edit, .logout {
+.btn-secondary:hover {
+  .new-student, .edit, 
+  .logout {
+    text-decoration: none;
+    color:white;
+  }
+}
+
+.new-student, .edit, 
+.class-change, .logout {
+  width: 100%;
   text-align: center;
   text-decoration: none;
   color:white;
-  background-color: #1e366a;
-  padding: 8px;
-  border-radius: 15px;
-  opacity: 1;
-  transition: .3s;
-  box-shadow: 4px 4px 5px #666666;
-  border-color: #1e366a;
-}
-
-.new-student:hover, .edit:hover, 
-.logout:hover {
-  box-shadow    : none;
-  opacity       : 0.8; 
-  text-decoration: none;
 }
 
 .form-group {
@@ -151,14 +139,23 @@ li {
 }
 
 .class-list {
-  width: 100px;
+  width: 100%;
 }
 
 ul.class-list {
   width: 60px;
 }
 
+ul.class-list-change {
+  width: 100%;
+}
+
 ul.class-list li {
+  position:relative;
+	padding: 0em 0.3em 0.3em 1.3em;
+}
+
+ul.class-list-change li {
   position:relative;
 	padding: 0em 0.3em 0.3em 1.3em;
 }
@@ -176,3 +173,53 @@ ul.class-list li::before {
 	transform: rotate(-45deg);
 }
 
+ul.class-list-change li::before {
+	position: absolute;
+	content: '';
+	display: block;
+	top: 0.5em;
+	left: 0;
+	width: 6px;
+	height: 6px;
+	border-right: 3px solid #00BCD4;
+	border-bottom: 3px solid #00BCD4;
+	transform: rotate(-45deg);
+}
+
+.class-change-top {
+  margin-bottom: 20px;
+}
+
+.list-class-change {
+  width: 150px;
+  height: 550px;
+  overflow: scroll;
+  background-color: white;
+  border-radius: 20px 0;
+  border: 1px #ddd solid;
+  padding: 5px 0 5px 10px;
+  box-shadow: 4px 4px 5px #666666;
+}
+
+.list-class-change-box {
+  width: 450px;
+  height: 500px;
+  
+  overflow: scroll;
+  background-color: white;
+  border-radius: 20px 0;
+  border: 1px #ddd solid;
+  padding: 5px 0 5px 10px;
+  box-shadow: 4px 4px 5px #666666;
+}
+
+h2 {
+  padding: 0 10px;
+  margin-right: 20px;
+  background:linear-gradient(transparent 70%, #FFFF00 0%);
+  font-family: 'Avenir','Helvetica Neue','Helvetica','Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic'
+}
+
+.class-name-change {
+  width: 100%;
+}

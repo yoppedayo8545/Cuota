@@ -1,0 +1,166 @@
+<canvas id="canvas"></canvas>
+
+<header class='top-page-header'>
+  <div class='search-bar-contents'>
+    <%= link_to image_tag('cuota-sample.png', class:"cuota-icon"), "/" %>
+  </div>
+
+</header>
+<%= form_with model: @student, url: reset_second_year_schools_path, local: true do |f| %>
+<div class="btn-group-top">
+  <div>
+    <h2>2年生</h2>
+  </div>
+  <div class="change-class-select">
+      <%= f.collection_select(:school_class_id, SchoolClass.all, :id, :name, {include_blank:'変更先のクラスを選択してください'}, {class:"select-box", id:"school-name"}) %>
+  </div>
+</div>
+
+  
+  <div class='student-list'>
+    <div class='class-box-change'>
+      <ul class='class-list'>
+       <li class='class-name-change'>1組</li>
+      </ul>
+     <div class="class-list">  
+        <div class='list-class-change'>
+          
+              <%= f.collection_check_boxes(:student_ids, Student.where(school_year_id: 2, school_class_id: 1).order(:number), :id, :full_name, include_hidden: false ) do |b| %>
+                <%= b.label { b.check_box + b.text } %>
+              <% end %>
+
+        </div>
+     </div>
+    </div>
+      <div class='class-box-change'>
+        <ul class='class-list'>
+          <li class='class-name-change'>2組</li>
+        </ul>
+     <div class="class-list">  
+        <div class='list-class-change'>
+         
+              <%= f.collection_check_boxes(:student_ids, Student.where(school_year_id: 2, school_class_id: 2).order(:number), :id, :full_name, include_hidden: false ) do |b| %>
+                <%= b.label { b.check_box + b.text } %>
+              <% end %>
+              
+        </div>
+      </div>
+    </div>
+    <div class='class-box-change'>
+      <ul class='class-list'>
+       <li class='class-name-change'>3組</li>
+      </ul>
+     <div class="class-list">  
+        <div class='list-class-change'>
+         
+              <%= f.collection_check_boxes(:student_ids, Student.where(school_year_id: 2, school_class_id: 3).order(:number), :id, :full_name, include_hidden: false ) do |b| %>
+                <%= b.label { b.check_box + b.text } %>
+              <% end %>
+         
+        </div>
+      </div>
+    </div>
+      <div class='class-box-change'>
+          <ul class='class-list-change'>
+            <li class='class-name-change'>チェック一覧</li>
+          </ul>
+     <div class="class-list">  
+        <div class='list-class-change-box'>
+
+
+              
+        </div>
+        <div class="class-update">
+          <%= f.submit "更新" %>
+        </div>              
+      <% end %>
+      </div>
+    </div>
+    <div class="year-box">
+        <div class='class-box'>
+        <div class='school-class'>
+        </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+var livePatern = {
+  canvas: null,
+  context: null,
+  cols: 0,
+  rows: 0,
+  colors: [252, 251, 249, 248, 241, 240],
+  triangleColors: [],
+  destColors: [],
+  
+  init: function(){
+    this.canvas = document.getElementById('canvas');
+    this.context = this.canvas.getContext('2d');
+    this.cols = Math.floor(document.body.clientWidth / 24);
+    this.rows = Math.floor(document.body.clientHeight / 24) + 1;
+    
+    this.canvas.width = document.body.clientWidth;
+    this.canvas.height = document.body.clientHeight;
+    
+    this.drawBackground();
+    this.animate();
+  },
+  
+  drawTriangle: function(x, y, color, inverted){
+    inverted = inverted == undefined ? false : inverted;
+
+    this.context.beginPath();
+    this.context.moveTo(x, y);
+    this.context.lineTo(inverted ? x - 22 : x + 22, y + 11);
+    this.context.lineTo(x, y + 22);
+    this.context.fillStyle = "rgb("+color+","+color+","+color+")";
+    this.context.fill();
+    this.context.closePath();
+  },
+  
+  getColor: function(){    
+    return this.colors[(Math.floor(Math.random() * 6))];
+  },
+  
+  drawBackground: function(){
+    var eq = null;
+    var x = this.cols;
+    var destY = 0;
+    var color, y;
+    
+    while(x--){
+      eq = x % 2;
+      y = this.rows;
+
+      while(y--){
+        destY = Math.round((y-0.5) * 24);
+
+        this.drawTriangle(x * 24 + 2, eq == 1 ? destY : y * 24, this.getColor());
+        this.drawTriangle(x * 24, eq == 1 ? destY  : y * 24, this.getColor(), true);
+      }
+    }
+  },
+  
+  animate: function(){
+    var me = this;
+
+    var x = Math.floor(Math.random() * this.cols);
+    var y = Math.floor(Math.random() * this.rows);
+    var eq = x % 2;
+
+    if (eq == 1) {
+      me.drawTriangle(x * 24, Math.round((y-0.5) * 24) , this.getColor(), true);
+    } else {
+      me.drawTriangle(x * 24 + 2, y * 24, this.getColor());
+    }
+
+    setTimeout(function(){    
+      me.animate.call(me);
+    }, 10);
+  },
+};
+
+!function(){livePatern.init();}()
+</script>

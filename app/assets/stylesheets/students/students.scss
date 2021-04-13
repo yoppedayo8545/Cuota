@@ -70,6 +70,9 @@ html, body {
   border: 1px #ddd solid;
   padding: 5px 0 5px 10px;
   box-shadow: 4px 4px 5px #666666;
+  .student-name {
+    text-decoration: none;
+  }
 }
 
 .student-name h4 {
@@ -268,6 +271,10 @@ h4 {
   display: flex;
 }
 
+.class-box-change {
+  height: 100%;
+}
+
 .class-name {
   margin-bottom: 120px;
   display: block;
@@ -371,4 +378,29 @@ h4 {
 
 .tab-switch {
 	display: none;
+}
+
+.class-select {
+  margin: 0px 10vw 30px;
+  width: 280px;
+}
+
+.class-update {
+  margin-bottom: 26px;
+  text-align: center;
+}
+
+.class-update input[type="submit"] {
+  border-style: none;
+  width: 50%;
+  height: 31px;
+  background: linear-gradient(to bottom,#f7dfa5,#f0c14b);
+  border-radius: 3px;
+  border: 1px #a88734 solid;
+  margin-top: 10px;
+}
+
+.class-update input[type="submit"]:hover {
+  cursor: pointer;
+  background: #f0c14b;
 }
