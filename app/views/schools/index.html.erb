@@ -1,3 +1,21 @@
+<script>
+  window.addEventListener('load', function(){
+    const pullDownButton = document.getElementById("class-change")
+    
+    pullDownButton.addEventListener('mouseover', function(){
+    console.log("mouseover OK")
+    })
+
+    pullDownButton.addEventListener('mouseout', function(){
+    console.log("mouseout OK")
+    })
+
+    pullDownButton.addEventListener('click', function() {
+    console.log("click OK")
+    })
+  })
+</script>
+
 <% unless @nursing_teacher.image.attached? %>
   <canvas id="canvas"></canvas>
 <% end %>
@@ -19,11 +37,24 @@
           <li><%= link_to "#{current_nursing_teacher.last_name} 先生", edit_nursing_teacher_registration_path, class: "user-name" %></li>
           <li class='hello'><%= "こんにちは" %></li>
         </ul>
-        <ul class='user-content'>  
-          <li class='content-edit'><%= link_to '生徒新規登録', new_student_path, class: "new-student" %></li>
-          <li class='content-edit'><%= link_to '管理者情報編集', edit_nursing_teacher_registration_path, class: "edit" %></li>
-          <li class='content-logout'><%= link_to 'ログアウト', destroy_nursing_teacher_session_path, method: :delete, class: "logout" %></li>  
-        </ul>
+        <div class="btn-group" > 
+          <button type="button" class="btn btn-secondary"><%= link_to '生徒新規登録', new_student_path, class: "new-student" %></button>
+          <button type="button" class="btn btn-secondary"><%= link_to '管理者情報編集', edit_nursing_teacher_registration_path, class: "edit" %></button>
+        <div class="btn-group-year" role="group">
+          <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          クラス一括更新
+          </button>
+            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+              <a class="dropdown-item" href="schools/class_change_one_year">1年生</a>
+              <a class="dropdown-item" href="schools/class_change_second_year">2年生</a>
+              <a class="dropdown-item" href="schools/class_change_third_year">3年生</a>
+              <a class="dropdown-item" href="schools/class_change_fourth_year">4年生</a>
+              <a class="dropdown-item" href="schools/class_change_fifth_year">5年生</a>
+              <a class="dropdown-item" href="schools/class_change_six_year">6年生</a>
+            </div>
+        </div>
+          <button type="button" class="btn btn-secondary"><%= link_to 'ログアウト', destroy_nursing_teacher_session_path, method: :delete, class: "logout" %></button>
+        </div>
   </div>
 
 </header>
@@ -359,7 +390,6 @@
 
 
 <script>
-
 var livePatern = {
   canvas: null,
   context: null,
@@ -436,6 +466,5 @@ var livePatern = {
   },
 };
 
-
-
+!function(){livePatern.init();}()
 </script>
