@@ -12,7 +12,8 @@ class StudentsController < ApplicationController
   end
 
   def create
-    @student = Student.new(student_params)
+    @student = Student.new
+    @student = Student.create(student_params)
     @student.school_year_update = 0
     if @student.save
       redirect_to root_path

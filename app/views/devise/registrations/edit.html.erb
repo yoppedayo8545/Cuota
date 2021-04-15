@@ -1,13 +1,3 @@
-<script>
-
-    $(function(){           
-      $("#nursing_teacher_password").click(function(){        
-        alert("こんにちは！");
-      });
-    });
-
-</script>
-
 <canvas id="canvas"></canvas>
 
 <header class='top-page-header'>
@@ -125,10 +115,6 @@
 
 <div class="box-newusr">
   <%= button_to "アカウントの削除", registration_path(resource_name), data: { confirm: "本当に削除してよろしいですか?" }, method: :delete %>
-</div>
-
-<div class='back'>
-  <%= link_to "戻る", :back %>
 </div>
 
 <script>

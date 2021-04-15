@@ -81,27 +81,27 @@
 
 
 <script>
-window.addEventListener('load', function(){
-
-  let checkname = document.querySelectorAll("label");
-  checkname.forEach( function(check){
-    let checkFullName = check.textContent
-    console.log(checkFullName)
-  })
-
-  let checkbox = document.querySelectorAll('input[type="checkbox"]');
-    console.log(checkbox)
-    checkbox.forEach( check => check.onchange = checkList );
-
-  function checkList(event){
-    let checked = document.querySelectorAll('input[type="checkbox"]:checked');
-    checkname.forEach( function(check){
-    let checkFullName = check.textContent
-    console.log(checkFullName)
-    document.getElementById("change-box").innerHTML = checkFullName;
-    })
-  }
-})
+// window.addEventListener('load', function(){
+// 
+  // let checkname = document.querySelectorAll("label");
+  // checkname.forEach( function(check){
+    // let checkFullName = check.textContent
+    // console.log(checkFullName)
+  // })
+// 
+  // let checkbox = document.querySelectorAll('input[type="checkbox"]');
+    // console.log(checkbox)
+    // checkbox.forEach( check => check.onchange = checkList );
+// 
+  // function checkList(event){
+    // let checked = document.querySelectorAll('input[type="checkbox"]:checked');
+    // checkname.forEach( function(check){
+    // let checkFullName = check.textContent
+    // console.log(checkFullName)
+    // document.getElementById("change-box").innerHTML = checkFullName;
+    // })
+  // }
+// })
 
 var livePatern = {
   canvas: null,
