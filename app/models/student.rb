@@ -14,9 +14,9 @@ class Student < ApplicationRecord
 
   def self.search(search)
     if search != ''
-      Student.where('last_name LIKE(?) or first_name LIKE(?) or allergy LIKE(?) or
-      special_support LIKE(?) or other_ht LIKE(?) or other_nt LIKE(?)',
-                    "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")
+      Student.where('last_name LIKE(?) or first_name LIKE(?) or allergy LIKE(?) or allergy_other LIKE(?) 
+      or special_support LIKE(?) or other_ht LIKE(?) or other_nt LIKE(?)',
+                    "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")
     else
       Student.all
     end

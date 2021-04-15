@@ -14,7 +14,7 @@ class StudentsController < ApplicationController
   def create
     @student = Student.new
     @student = Student.create(student_params)
-    @student.school_year_update = 0
+    @student.school_year_update = 1
     if @student.save
       redirect_to root_path
     else
