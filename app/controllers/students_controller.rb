@@ -35,7 +35,7 @@ class StudentsController < ApplicationController
 
   def search
     @nursing_teacher = NursingTeacher.find(current_nursing_teacher.id)
-    @students = Student.search(params[:keyword])
+    @students = Student.search(params[:keyword]).order(:number)
   end
 
   private

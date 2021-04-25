@@ -26,7 +26,7 @@
   <div class='search-bar-contents'>
     <%= link_to image_tag('cuota-sample.png', class:"cuota-icon"), "/" %>
     <%= form_with url: search_students_path, class:'search-form', method: :get, local: true do |f| %>
-      <%= f.text_field :keyword, class:'input-box', placeholder:'名前から探す' %>
+      <%= f.text_field :keyword, class:'input-box', placeholder:'キーワードから探す' %>
       <%= f.submit "検索", class: "search-button" %>
     <% end %>
   </div>
