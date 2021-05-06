@@ -24,6 +24,18 @@ class Student < ApplicationRecord
     end
   end
 
+  def self.import(file)
+    CSV.foreach(file.path, headers: true) do |row|
+      student = find_by(id: row["id"]) || new
+      student.attributes = row.to_hash.slice(*updatable_attributes)
+      student.save!(validate: false)
+    end
+  end
+  
+  def self.updatable_attributes
+    ['last_name', 'first_name', 'school_year_id', 'school_class_id', 'gender_id']
+  end
+
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :school
   belongs_to :school_year

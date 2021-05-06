@@ -31,6 +31,10 @@ Rails.application.routes.draw do
   resources :students, only: [:new, :create, :edit, :update ] do
     collection do
       get 'search'
+
+      get 'bulk_new'
+
+      post 'import' 
     end
   end
 end
