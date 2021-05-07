@@ -38,6 +38,15 @@ class StudentsController < ApplicationController
     @students = Student.search(params[:keyword]).order(:number)
   end
 
+  def bulk_new
+    @student = Student.new
+  end
+
+  def import
+    Student.import(params[:file])
+    redirect_to students_path
+  end
+
   private
 
   def student_params
