@@ -36,5 +36,9 @@ Rails.application.routes.draw do
 
       post 'import' 
     end
+    
+    member do
+      get 'basic_edit'
+    end
   end
 end

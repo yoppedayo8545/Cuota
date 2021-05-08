@@ -17,8 +17,9 @@
     <div class='student-memo-box'>
 
     <div class="student-edit-box">
+      <button type="button" class="btn btn-secondary"><%= link_to '生徒基本情報編集', basic_edit_student_path, class: "edit" %></button>
       <div class="student-school-status">
-
+      
         <div class="status-column">
           <div class="status-column-left">
             <h4>学校名
@@ -115,6 +116,8 @@
       
       </div>
     </div>
+
+    
     
     <script>
       function connect_text( text_id, ischecked ) {
