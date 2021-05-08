@@ -1,0 +1,221 @@
+<canvas id="canvas"></canvas>
+
+<header class='top-page-header'>
+  <div class='search-bar-contents'>
+   <div class="icon-box">
+    <%= link_to image_tag('cuota-sample.png', class:"cuota-icon"), "/" %>
+   </div> 
+  </div>
+</div>
+    <%= render "devise/shared/error_messages", resource: @student %> 
+  <h1>生徒基本情報修正</h1>
+  <div class="box-student">
+    <div class="box-inner">
+
+      <%= form_for( @student ) do |f| %>
+
+      <div class="box-full-name">
+        <div class="a-row-full-name">
+          <div class="column-left">
+            <%= f.label :last_name, "氏名" %>
+          </div>
+          <div class="column-right">
+            <span class="mandatory">必須</span>
+          </div>
+        </div>
+        <div class="a-row-full-name-field">
+          <div class="column-left">
+            <%= f.text_field :last_name, autofocus: true, placeholder: "例)  田中 ", autocomplete: "last_name" %>
+          </div>
+          <div class="column-right">
+            <%= f.text_field :first_name, placeholder: "例)  太郎 ", autocomplete: "first_name" %>
+          </div>
+        </div>
+      </div>
+    
+      <div class="box-full-name-kana">
+        <div class="a-row-full-name">
+          <div class="column-left">
+            <%= f.label :first_name, "フリガナ" %>
+          </div>
+          <div class="column-right">
+            <span class="mandatory">必須</span>
+          </div>
+        </div>
+        <div class="a-row-full-name-field">
+          <div class="column-left">
+            <%= f.text_field :last_kana, placeholder: "例)  タナカ ", autocomplete: "last_kana" %>
+          </div>
+          <div class="column-right">
+            <%= f.text_field :first_kana, placeholder: "例)  タロウ ", autocomplete: "first_kana" %>
+          </div>
+        </div>
+      </div>
+
+  
+      <div class="box-school">
+        <div class="a-row">
+          <div class="column-left">
+            <%= f.label :school_id, "学校名" %>
+          </div>
+          <div class="column-right">
+            <span class="mandatory">必須</span>
+          </div>
+          <%= f.collection_select(:school_id, School.all, :id, :name, {include_blank:'選択してください'}, {class:"select-box", id:"school-name"}) %>
+        </div>
+      </div>
+
+      <div class="box-school_year">
+        <div class="a-row">
+          <div class="column-left">
+            <%= f.label :school_year_id, "学年" %>
+          </div>
+          <div class="column-right">
+            <span class="mandatory">必須</span>
+          </div>
+          <%= f.collection_select(:school_year_id, SchoolYear.all, :id, :name, {include_blank:'選択してください'}, {class:"select-box", id:"school-name"}) %>
+        </div>
+      </div>
+
+      <div class="box-school_class">
+        <div class="a-row">
+          <div class="column-left">
+            <%= f.label :school_class_id, "クラス" %>
+          </div>
+          <div class="column-right">
+            <span class="mandatory">必須</span>
+          </div>
+          <%= f.collection_select(:school_class_id, SchoolClass.all, :id, :name, {include_blank:'選択してください'}, {class:"select-box", id:"school-name"}) %>
+        </div>
+      </div>
+
+      <div class="box-number">
+        <div class="a-row">
+          <div class="column-left">
+            <%= f.label :number, "出席番号" %>
+          </div>
+          <div class="column-right">
+            <span class="mandatory">必須</span>
+          </div>
+          <div class="student-number">
+            <%= f.text_field :number, placeholder: "例)  17 ", autocomplete: "number" %>
+          </div>
+        </div>
+        <%# <em>注：半角数字で入力してください</em> %>
+      </div>
+
+      <div class="box-gender">
+        <div class="a-row">
+          <div class="column-left">
+            <%= f.label :gender_id, "性別" %>
+          </div>
+          <div class="column-right">
+            <span class="mandatory">必須</span>
+          </div>
+          <%= f.collection_select(:gender_id, Gender.all, :id, :name, {include_blank:'選択してください'}, {class:"select-box", id:"school-name"}) %>
+        </div>
+      </div>
+
+      <div class="box-date">
+        <div class="a-row">
+          <div class="column-left">
+            <%= f.label :date, "誕生日" %>
+          </div>
+          <div class="column-right">
+            <%= f.date_field :date, value:"2010-04-02", autocomplete: "date" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="box-login">
+      <%= f.submit "登録" %>
+    </div>
+    
+    <% end %>
+
+  </div>
+</div>
+
+
+<script>
+
+var livePatern = {
+  canvas: null,
+  context: null,
+  cols: 0,
+  rows: 0,
+  colors: [252, 251, 249, 248, 241, 240],
+  triangleColors: [],
+  destColors: [],
+  
+  init: function(){
+    this.canvas = document.getElementById('canvas');
+    this.context = this.canvas.getContext('2d');
+    this.cols = Math.floor(document.body.clientWidth / 24);
+    this.rows = Math.floor(document.body.clientHeight / 24) + 1;
+    
+    this.canvas.width = document.body.clientWidth;
+    this.canvas.height = document.body.clientHeight;
+    
+    this.drawBackground();
+    this.animate();
+  },
+  
+  drawTriangle: function(x, y, color, inverted){
+    inverted = inverted == undefined ? false : inverted;
+
+    this.context.beginPath();
+    this.context.moveTo(x, y);
+    this.context.lineTo(inverted ? x - 22 : x + 22, y + 11);
+    this.context.lineTo(x, y + 22);
+    this.context.fillStyle = "rgb("+color+","+color+","+color+")";
+    this.context.fill();
+    this.context.closePath();
+  },
+  
+  getColor: function(){    
+    return this.colors[(Math.floor(Math.random() * 6))];
+  },
+  
+  drawBackground: function(){
+    var eq = null;
+    var x = this.cols;
+    var destY = 0;
+    var color, y;
+    
+    while(x--){
+      eq = x % 2;
+      y = this.rows;
+
+      while(y--){
+        destY = Math.round((y-0.5) * 24);
+
+        this.drawTriangle(x * 24 + 2, eq == 1 ? destY : y * 24, this.getColor());
+        this.drawTriangle(x * 24, eq == 1 ? destY  : y * 24, this.getColor(), true);
+      }
+    }
+  },
+  
+  animate: function(){
+    var me = this;
+
+    var x = Math.floor(Math.random() * this.cols);
+    var y = Math.floor(Math.random() * this.rows);
+    var eq = x % 2;
+
+    if (eq == 1) {
+      me.drawTriangle(x * 24, Math.round((y-0.5) * 24) , this.getColor(), true);
+    } else {
+      me.drawTriangle(x * 24 + 2, y * 24, this.getColor());
+    }
+
+    setTimeout(function(){    
+      me.animate.call(me);
+    }, 10);
+  },
+};
+
+!function(){livePatern.init();}()
+
+
+</script>

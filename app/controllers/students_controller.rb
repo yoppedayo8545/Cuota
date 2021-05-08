@@ -1,7 +1,7 @@
 class StudentsController < ApplicationController
   # before_action :authenticate_nursing_teacher!, only: [:new,:edit,:destroy]
-  before_action :set_student, only: [:edit, :update]
-  before_action :move_to_index, only: [:edit, :update]
+  before_action :set_student, only: [:edit, :update, :basic_edit]
+  before_action :move_to_index, only: [:edit, :update, :basic_edit]
 
   def index
     @students = Student.all
@@ -45,6 +45,9 @@ class StudentsController < ApplicationController
   def import
     Student.import(params[:file])
     redirect_to students_path
+  end
+
+  def basic_edit
   end
 
   private
