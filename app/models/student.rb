@@ -25,7 +25,7 @@ class Student < ApplicationRecord
   end
 
   def self.import(file)
-    CSV.foreach(file.path, headers: true) do |row|
+    CSV.foreach(file.path, encoding: 'Shift_JIS:UTF-8', headers: true) do |row|
       student = find_by(id: row["id"]) || new
       student.attributes = row.to_hash.slice(*updatable_attributes)
       student.save!(validate: false)
@@ -33,7 +33,7 @@ class Student < ApplicationRecord
   end
   
   def self.updatable_attributes
-    ['last_name', 'first_name', 'school_year_id', 'school_class_id', 'gender_id']
+    ['last_name', 'first_name', 'last_kana', 'first_kana', 'school_year_id', 'school_class_id', 'gender_id', 'school_id', 'number', 'nursing_teacher_id']
   end
 
   extend ActiveHash::Associations::ActiveRecordExtensions

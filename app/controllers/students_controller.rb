@@ -44,7 +44,7 @@ class StudentsController < ApplicationController
 
   def import
     Student.import(params[:file])
-    redirect_to students_path
+    redirect_to root_path
   end
 
   def basic_edit
