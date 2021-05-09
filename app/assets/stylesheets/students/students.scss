@@ -41,6 +41,17 @@ html, body {
   box-shadow: 4px 4px 5px #666666;
 }
 
+.box-student-csv {
+  width: 450px;
+  height: 545px;
+  margin: 20px auto 0;
+  padding: 20px;
+  border-radius: 4px;
+  border: 1px #ddd solid;
+  box-shadow: 4px 4px 5px #666666;
+  text-align: center;
+}
+
 .year-box {
   display: flex;
 }
@@ -402,4 +413,36 @@ h4 {
 .class-update input[type="submit"]:hover {
   cursor: pointer;
   background: #f0c14b;
+}
+
+.csv-sample {
+  color: #00BCD4;
+  cursor: pointer;
+  padding: 0 0 20px;
+}
+
+h5 {
+  padding: 10px 0 20px 0;
+}
+
+h6 {
+  padding: 20px 0 10px 0;
+}
+
+.mandatory {
+  font-size: 23px;
+  width: 100px;
+  height: 40px;
+  background:linear-gradient(transparent 70%, #FFFF00 0%);
+}
+
+.mandatory-item {
+  color: #666666;
+  font-weight: bold;
+  text-align: left;
+}
+
+.mandatory-item-details {
+  display: flex;
+  justify-content: space-between;
 }

@@ -39,10 +39,12 @@ class StudentsController < ApplicationController
   end
 
   def bulk_new
+    @nursing_teacher = NursingTeacher.find(current_nursing_teacher.id)
     @student = Student.new
   end
 
   def import
+    @nursing_teacher = NursingTeacher.find(current_nursing_teacher.id)
     Student.import(params[:file])
     redirect_to root_path
   end

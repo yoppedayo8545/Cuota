@@ -8,9 +8,40 @@
   </div>
     <%= render "devise/shared/error_messages", resource: @student %> 
   <h1>生徒一括登録</h1>
-  <div class="box-student">
+  <div class="box-student-csv">
     <div class="box-inner">
-      <h6>csvファイルから生徒情報を読み込みます</h6>
+      <h5>csvファイルから生徒情報を読み込みます。</h5>
+       <div class="mandatory">
+        <ul class="mandatory-item">必須項目
+       </div>
+          <div class="mandatory-item-details">
+            <li>・last_name</li><li>苗字 ※全角</li>
+          </div>
+          <div class="mandatory-item-details">
+            <li>・first_name</li><li>名前 ※全角</li>
+          </div>
+          <div class="mandatory-item-details">
+            <li>・last_kana</li><li>苗字(フリガナ) ※全角カタカナ</li>
+          </div>
+          <div class="mandatory-item-details">
+            <li>・first_kana</li><li>名前(フリガナ) ※全角カタカナ</li>
+          </div>
+          <div class="mandatory-item-details">
+            <li>・school_year_id</li><li>学年 ※半角数字</li>
+          </div>
+          <div class="mandatory-item-details">
+            <li>・school_class_id</li><li>クラス ※半角数字</li>
+          </div>
+          <div class="mandatory-item-details">
+            <li>・number</li><li>出席番号 ※半角数字</li>
+          </div>
+          <div class="mandatory-item-details">
+            <li>・gender_id</li><li>性別(男子:1,女子:2) ※半角数字</li>
+          </div>
+        </ul>
+        <h6>※カラム名は必ず上記左の名称で統一してください。<br>
+        ※カラム名が違うと正しく読み込まれません。</h6>
+      <h6 class="csv-sample" id="csv-sample">csvファイル作成例</h6>
 
       <%= form_tag( {action: :import}, multipart: true) do %>
         <%= file_field_tag :file %>
