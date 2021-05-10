@@ -25,7 +25,7 @@
      <div class="class-list">  
         <div class='list-class-change'>
           
-              <%= f.collection_check_boxes(:student_ids, Student.where(school_year_id: 4, school_class_id: 1).order(:number), :id, :full_name, include_hidden: false ) do |b| %>
+              <%= f.collection_check_boxes(:student_ids, Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 4, school_class_id: 1).order(:number), :id, :full_name, include_hidden: false ) do |b| %>
                 <%= b.label { b.check_box + b.text } %>
               <% end %>
 
@@ -39,7 +39,7 @@
      <div class="class-list">  
         <div class='list-class-change'>
          
-              <%= f.collection_check_boxes(:student_ids, Student.where(school_year_id: 4, school_class_id: 2).order(:number), :id, :full_name, include_hidden: false ) do |b| %>
+              <%= f.collection_check_boxes(:student_ids, Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 4, school_class_id: 2).order(:number), :id, :full_name, include_hidden: false ) do |b| %>
                 <%= b.label { b.check_box + b.text } %>
               <% end %>
               
@@ -53,7 +53,7 @@
      <div class="class-list">  
         <div class='list-class-change'>
          
-              <%= f.collection_check_boxes(:student_ids, Student.where(school_year_id: 4, school_class_id: 3).order(:number), :id, :full_name, include_hidden: false ) do |b| %>
+              <%= f.collection_check_boxes(:student_ids, Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 4, school_class_id: 3).order(:number), :id, :full_name, include_hidden: false ) do |b| %>
                 <%= b.label { b.check_box + b.text } %>
               <% end %>
          
