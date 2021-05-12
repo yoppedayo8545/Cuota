@@ -28,12 +28,6 @@ class Student < ApplicationRecord
     CSV.foreach(file.path, encoding: 'Shift_JIS:UTF-8', headers: true) do |row|
       student = find_by(id: row["id"]) || new
       student.attributes = row.to_hash.slice(*updatable_attributes)
-        if student.school_id == nil?
-          student.school_id = @nursing_teacher.school_id
-        end
-        if student.nursing_teacher_id == nil?
-          student.nursing_teacher_id = @nursing_teacher.id
-        end
       student.save!(validate: false)
     end
   end
