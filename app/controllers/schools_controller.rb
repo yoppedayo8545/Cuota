@@ -35,17 +35,17 @@ class SchoolsController < ApplicationController
            student.school_class_id = @class_id
            student.save
          end
-         @students = Student.where(school_year_id: 1, school_class_id: 1).order(:gender_id).order(:last_kana).order(:date)
+         @students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 1, school_class_id: 1).order(:gender_id).order(:last_kana).order(:date)
          @students.each_with_index do |student, num|
           student.number = "#{num+1}"
           student.save
          end
-         @students = Student.where(school_year_id: 1, school_class_id: 2).order(:gender_id).order(:last_kana).order(:date)
+         @students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 1, school_class_id: 2).order(:gender_id).order(:last_kana).order(:date)
           @students.each_with_index do |student, num|
            student.number = "#{num+1}"
            student.save
          end
-         @students = Student.where(school_year_id: 1, school_class_id: 3).order(:gender_id).order(:last_kana).order(:date)
+         @students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 1, school_class_id: 3).order(:gender_id).order(:last_kana).order(:date)
           @students.each_with_index do |student, num|
            student.number = "#{num+1}"
            student.save
@@ -64,17 +64,17 @@ class SchoolsController < ApplicationController
            student.school_class_id = @class_id
            student.save
          end
-         @students = Student.where(school_year_id: 2, school_class_id: 1).order(:gender_id).order(:last_kana).order(:date)
+         @students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 2, school_class_id: 1).order(:gender_id).order(:last_kana).order(:date)
          @students.each_with_index do |student, num|
           student.number = "#{num+1}"
           student.save
          end
-         @students = Student.where(school_year_id: 2, school_class_id: 2).order(:gender_id).order(:last_kana).order(:date)
+         @students = Student.where(school_id: "#{@nursing_teacher.school_id}",school_year_id: 2, school_class_id: 2).order(:gender_id).order(:last_kana).order(:date)
           @students.each_with_index do |student, num|
            student.number = "#{num+1}"
            student.save
          end
-         @students = Student.where(school_year_id: 2, school_class_id: 3).order(:gender_id).order(:last_kana).order(:date)
+         @students = Student.where(school_id: "#{@nursing_teacher.school_id}",school_year_id: 2, school_class_id: 3).order(:gender_id).order(:last_kana).order(:date)
           @students.each_with_index do |student, num|
            student.number = "#{num+1}"
            student.save
@@ -93,17 +93,17 @@ class SchoolsController < ApplicationController
            student.school_class_id = @class_id
            student.save
          end
-         @students = Student.where(school_year_id: 3, school_class_id: 1).order(:gender_id).order(:last_kana).order(:date)
+         @students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 3, school_class_id: 1).order(:gender_id).order(:last_kana).order(:date)
          @students.each_with_index do |student, num|
           student.number = "#{num+1}"
           student.save
          end
-         @students = Student.where(school_year_id: 3, school_class_id: 2).order(:gender_id).order(:last_kana).order(:date)
+         @students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 3, school_class_id: 2).order(:gender_id).order(:last_kana).order(:date)
           @students.each_with_index do |student, num|
            student.number = "#{num+1}"
            student.save
          end
-         @students = Student.where(school_year_id: 3, school_class_id: 3).order(:gender_id).order(:last_kana).order(:date)
+         @students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 3, school_class_id: 3).order(:gender_id).order(:last_kana).order(:date)
           @students.each_with_index do |student, num|
            student.number = "#{num+1}"
            student.save
@@ -122,17 +122,17 @@ class SchoolsController < ApplicationController
            student.school_class_id = @class_id
            student.save
          end
-         @students = Student.where(school_year_id: 4, school_class_id: 1).order(:gender_id).order(:last_kana).order(:date)
+         @students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 4, school_class_id: 1).order(:gender_id).order(:last_kana).order(:date)
          @students.each_with_index do |student, num|
           student.number = "#{num+1}"
           student.save
          end
-         @students = Student.where(school_year_id: 4, school_class_id: 2).order(:gender_id).order(:last_kana).order(:date)
+         @students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 4, school_class_id: 2).order(:gender_id).order(:last_kana).order(:date)
           @students.each_with_index do |student, num|
            student.number = "#{num+1}"
            student.save
          end
-         @students = Student.where(school_year_id: 4, school_class_id: 3).order(:gender_id).order(:last_kana).order(:date)
+         @students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 4, school_class_id: 3).order(:gender_id).order(:last_kana).order(:date)
           @students.each_with_index do |student, num|
            student.number = "#{num+1}"
            student.save
@@ -151,17 +151,17 @@ class SchoolsController < ApplicationController
            student.school_class_id = @class_id
            student.save
          end
-         @students = Student.where(school_year_id: 5, school_class_id: 1).order(:gender_id).order(:last_kana).order(:date)
+         @students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 5, school_class_id: 1).order(:gender_id).order(:last_kana).order(:date)
          @students.each_with_index do |student, num|
           student.number = "#{num+1}"
           student.save
          end
-         @students = Student.where(school_year_id: 5, school_class_id: 2).order(:gender_id).order(:last_kana).order(:date)
+         @students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 5, school_class_id: 2).order(:gender_id).order(:last_kana).order(:date)
           @students.each_with_index do |student, num|
            student.number = "#{num+1}"
            student.save
          end
-         @students = Student.where(school_year_id: 5, school_class_id: 3).order(:gender_id).order(:last_kana).order(:date)
+         @students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 5, school_class_id: 3).order(:gender_id).order(:last_kana).order(:date)
           @students.each_with_index do |student, num|
            student.number = "#{num+1}"
            student.save
@@ -180,17 +180,17 @@ class SchoolsController < ApplicationController
            student.school_class_id = @class_id
            student.save
          end
-         @students = Student.where(school_year_id: 6, school_class_id: 1).order(:gender_id).order(:last_kana).order(:date)
+         @students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 6, school_class_id: 1).order(:gender_id).order(:last_kana).order(:date)
          @students.each_with_index do |student, num|
           student.number = "#{num+1}"
           student.save
          end
-         @students = Student.where(school_year_id: 6, school_class_id: 2).order(:gender_id).order(:last_kana).order(:date)
+         @students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 6, school_class_id: 2).order(:gender_id).order(:last_kana).order(:date)
           @students.each_with_index do |student, num|
            student.number = "#{num+1}"
            student.save
          end
-         @students = Student.where(school_year_id: 6, school_class_id: 3).order(:gender_id).order(:last_kana).order(:date)
+         @students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 6, school_class_id: 3).order(:gender_id).order(:last_kana).order(:date)
           @students.each_with_index do |student, num|
            student.number = "#{num+1}"
            student.save
