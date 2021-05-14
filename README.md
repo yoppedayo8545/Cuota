@@ -103,6 +103,8 @@
 | --------------------- | ------------ | ------------------------------ |
 | last_name             | string       | null: false                    |
 | first_name            | string       | null: false                    |
+| last_kana             | string       | null: false                    |
+| first_kana            | string       | null: false                    |
 | date                  | date         |                                |
 | school_year_id        | integer      | null: false                    |
 | school_class_id       | integer      | null: false                    |

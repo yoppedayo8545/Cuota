@@ -45,8 +45,11 @@ class StudentsController < ApplicationController
 
   def import
     @nursing_teacher = NursingTeacher.find(current_nursing_teacher.id)
-    Student.import(params[:file])
-    redirect_to root_path
+    if Student.import(params[:file])
+      redirect_to root_path
+    else
+      redirect_to bulk_new_students_path
+    end
   end
 
   def basic_edit
