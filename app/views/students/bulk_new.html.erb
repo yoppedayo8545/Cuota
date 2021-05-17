@@ -7,6 +7,7 @@
    </div> 
   </div>
     <%= render "devise/shared/error_messages", resource: @student %> 
+    <%= flash[:notice] %>
   <h1>生徒一括登録</h1>
   <div class="box-student-csv">
     <div class="box-inner">
@@ -50,10 +51,11 @@
       <h6 class="csv-sample" id="csv-sample">csvファイル作成例</h6>
 
       <%= form_tag( {action: :import}, multipart: true) do %>
-        <%= file_field_tag :file %>
+        <%= file_field_tag :file, accept: '.csv'%>
         <div class="box-login">
           <%= submit_tag "一括登録"%>
         </div>
+        
       <% end %>
   </div>
 </div>

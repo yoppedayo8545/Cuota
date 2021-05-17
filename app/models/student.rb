@@ -25,10 +25,14 @@ class Student < ApplicationRecord
   end
 
   def self.import(file)
-    CSV.foreach(file.path, encoding: 'Shift_JIS:UTF-8', headers: true) do |row|
-      student = find_by(id: row["id"]) || new
-      student.attributes = row.to_hash.slice(*updatable_attributes)
-      student.save!(validate: false)
+    CSV.foreach(file.path, encoding: 'Shift_JIS:UTF-8', headers: true, skip_blanks: true) do |row|
+      begin
+        student = find_by(id: row["id"]) || new
+        student.attributes = row.to_hash.slice(*updatable_attributes)
+        student.save!
+      rescue
+        
+      end
     end
   end
   

@@ -46,9 +46,10 @@ class StudentsController < ApplicationController
   def import
     @nursing_teacher = NursingTeacher.find(current_nursing_teacher.id)
     if Student.import(params[:file])
-      redirect_to root_path
+      num = Student.import(params[:file])
+      redirect_to bulk_new_students_path, notice: "#{ num.to_s }件のデータ情報を追加/更新しました"
     else
-      redirect_to bulk_new_students_path
+      redirect_to bulk_new_students_path, notice: "正しいデータファイルをインポートしてください"
     end
   end
 
