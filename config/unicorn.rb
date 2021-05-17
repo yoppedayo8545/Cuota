@@ -1,4 +1,5 @@
-app_path = File.expand_path('../../', __FILE__)
+# app_path = File.expand_path('../../', __FILE__)
+app_path = "/var/www/Cuota"
 
 #アプリケーションサーバの性能を決定する
 worker_processes 1
