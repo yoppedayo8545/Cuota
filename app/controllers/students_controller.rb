@@ -2,6 +2,7 @@ class StudentsController < ApplicationController
   # before_action :authenticate_nursing_teacher!, only: [:new,:edit,:destroy]
   before_action :set_student, only: [:edit, :update, :basic_edit]
   before_action :move_to_index, only: [:edit, :update, :basic_edit]
+  include Import
 
   def index
     @students = Student.all
@@ -45,6 +46,7 @@ class StudentsController < ApplicationController
 
   def import
     @nursing_teacher = NursingTeacher.find(current_nursing_teacher.id)
+    @errors = import(params[:file])
     if Student.import(params[:file])
       num = Student.import(params[:file])
       redirect_to bulk_new_students_path, notice: "#{ num.to_s }件のデータ情報を追加/更新しました"
