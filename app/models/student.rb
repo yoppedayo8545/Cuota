@@ -24,11 +24,14 @@ class Student < ApplicationRecord
     end
   end
 
+  @error_nums = []
+
   def self.import(file)
     begin
       Student.transaction do
         @num = 0
-        CSV.foreach(file.path, encoding: 'Shift_JIS:UTF-8', headers: true, skip_blanks: true).with_index(2) do |row, row_number|  
+        
+        CSV.foreach(file.path, encoding: 'Shift_JIS:UTF-8', headers: true, skip_blanks: true).with_index(1) do |row, row_number|  
           student = find_by(id: row["id"]) || new
           student.attributes = row.to_hash.slice(*updatable_attributes)
           if student.save
@@ -41,9 +44,11 @@ class Student < ApplicationRecord
         end
       end
     rescue => e
+      @error_nums.push(e.message)
       return
     end
     @num
+    @error_nums
   end
   
   def self.updatable_attributes

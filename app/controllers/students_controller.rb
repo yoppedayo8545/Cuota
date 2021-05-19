@@ -57,6 +57,7 @@ class StudentsController < ApplicationController
     if @student_counts.present?
       redirect_to bulk_new_students_path, notice: "#{ @student_counts.to_s }件のデータ情報を追加/更新しました"
     else
+      binding.pry
       redirect_to bulk_new_students_path, notice: "正しいデータファイルをインポートしてください"
     end
   end
