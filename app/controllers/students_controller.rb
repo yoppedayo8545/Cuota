@@ -2,7 +2,7 @@ class StudentsController < ApplicationController
   # before_action :authenticate_nursing_teacher!, only: [:new,:edit,:destroy]
   before_action :set_student, only: [:edit, :update, :basic_edit]
   before_action :move_to_index, only: [:edit, :update, :basic_edit]
-  include Import
+  # include Import
 
   def index
     @students = Student.all
@@ -46,10 +46,16 @@ class StudentsController < ApplicationController
 
   def import
     @nursing_teacher = NursingTeacher.find(current_nursing_teacher.id)
-    @errors = import(params[:file])
-    if Student.import(params[:file])
-      num = Student.import(params[:file])
-      redirect_to bulk_new_students_path, notice: "#{ num.to_s }件のデータ情報を追加/更新しました"
+    # @errors = import(params[:file])
+    # 1.csvデータの読み込み
+    # 2.正しいデータか確認(カラム) ※正しくなければエラーで抜ける、かつ対象カラム名のエラー表示
+    # 3.正しいデータか確認(データ毎のnilの有無) ※正しくなければエラーで抜ける、かつ対象行のエラー表示
+    # 4.上記のチェックがいずれもtrueであれば処理完了
+    # 5.同画面へリダイレクト
+    @file = params[:file] 
+    @student_counts = Student.import(@file)
+    if @student_counts.present?
+      redirect_to bulk_new_students_path, notice: "#{ @student_counts.to_s }件のデータ情報を追加/更新しました"
     else
       redirect_to bulk_new_students_path, notice: "正しいデータファイルをインポートしてください"
     end

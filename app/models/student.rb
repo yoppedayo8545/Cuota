@@ -24,18 +24,32 @@ class Student < ApplicationRecord
     end
   end
 
-  # def self.import(file)
-    # CSV.foreach(file.path, encoding: 'Shift_JIS:UTF-8', headers: true, skip_blanks: true).with_index(2) do |row, row_number|  
-        # student = find_by(id: row["id"]) || new
-        # student.attributes = row.to_hash.slice(*updatable_attributes)
-        # student.save
-    # end
-  # end
-  # 
-  # def self.updatable_attributes
-    # ['last_name', 'first_name', 'last_kana', 'first_kana', 'school_year_id', 'school_class_id', 'gender_id', 'school_id', 'number', 'nursing_teacher_id']
-  # end
-
+  def self.import(file)
+    begin
+      Student.transaction do
+        @num = 0
+        CSV.foreach(file.path, encoding: 'Shift_JIS:UTF-8', headers: true, skip_blanks: true).with_index(2) do |row, row_number|  
+          student = find_by(id: row["id"]) || new
+          student.attributes = row.to_hash.slice(*updatable_attributes)
+          if student.save
+            @num += 1
+            next
+          else
+            # indexを返す 
+            raise StandardError.new("#{row_number}")
+          end
+        end
+      end
+    rescue => e
+      return
+    end
+    @num
+  end
+  
+  def self.updatable_attributes
+    ['last_name', 'first_name', 'last_kana', 'first_kana', 'school_year_id', 'school_class_id', 'gender_id', 'school_id', 'number', 'nursing_teacher_id']
+  end
+ 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :school
   belongs_to :school_year
