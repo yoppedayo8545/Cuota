@@ -3,7 +3,7 @@ class Student < ApplicationRecord
   has_one_attached :image
 
   with_options presence: true do
-    validates :last_name, :first_name, :school_year_id, :school_class_id, :number, :gender_id, :school_id, :nursing_teacher_id
+    validates :last_name, :first_name, :school_year_id, :school_class_id, :number, :gender_id, :school_id
   end
 
   validates :number, numericality: { only_integer: true }
@@ -24,31 +24,36 @@ class Student < ApplicationRecord
     end
   end
 
-  @error_nums = []
-
   def self.import(file)
-    begin
-      Student.transaction do
-        @num = 0
-        
-        CSV.foreach(file.path, encoding: 'Shift_JIS:UTF-8', headers: true, skip_blanks: true).with_index(1) do |row, row_number|  
-          student = find_by(id: row["id"]) || new
-          student.attributes = row.to_hash.slice(*updatable_attributes)
-          if student.save
-            @num += 1
-            next
-          else
+    Student.transaction do
+      @num = 0
+      @error_nums = []
+      @errors = []
+      CSV.foreach(file.path, encoding: 'Shift_JIS:UTF-8', headers: true, skip_blanks: true).with_index(1) do |row, row_number|  
+        student = find_by(id: row["id"]) || new
+        student.attributes = row.to_hash.slice(*updatable_attributes)
+        if student.save
+          @num += 1
+        else
+          # カラムが正しいか判定
+          if student.valid?
             # indexを返す 
-            raise StandardError.new("#{row_number}")
+            @error_nums.push("#{row_number}")
+          else
+            # 不正なカラムの抽出
+            @errors.push(:messages => student.errors.full_messages)
+            break
           end
         end
       end
-    rescue => e
-      @error_nums.push(e.message)
-      return
     end
-    @num
-    @error_nums
+    if @num > 0
+      @num
+    elsif @error_nums.present?
+      @error_nums
+    else @errors.present?
+      @errors
+    end
   end
   
   def self.updatable_attributes

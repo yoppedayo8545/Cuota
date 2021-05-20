@@ -55,14 +55,13 @@
         <div class="box-login">
           <%= submit_tag "一括登録"%>
         </div>
-        <%# <% if @errors.present? %> 
-         <%# <% @errors.each do |error| %> 
-           <%# <% error[:messages].each do |message| %> 
-             <%# <li><%= "#{error[:row_num]}行目：#{message}" %></li> 
-           <%# <% end %> 
-         <%# <% end %> 
-        <%# <% end %> 
-        
+        <% if @errors.present? %> 
+         <% @errors.each do |error| %> 
+           <% error[:messages].each do |message| %> 
+             <li><%= "#{error[:row_num]}行目：#{message}" %></li> 
+           <% end %> 
+         <% end %> 
+        <% end %> 
       <% end %>
   </div>
 </div>
