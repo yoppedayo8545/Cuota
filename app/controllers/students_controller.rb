@@ -54,14 +54,18 @@ class StudentsController < ApplicationController
     # 5.同画面へリダイレクト
     @file = params[:file] 
     @student_counts = Student.import(@file)
+    # @errors = import(@file)
     if @student_counts.instance_of?(Array)
-        redirect_to bulk_new_students_path, notice: "#{ @student_counts }行目がエラーです" 
+      binding.pry
+      @student_counts.each do |x|
+        @row_num = x[:row_num]
+        @messages = x[:messages]
+      end    
+        redirect_to bulk_new_students_path
     elsif @student_counts.present?
         redirect_to bulk_new_students_path, notice: "#{ @student_counts.to_s }件のデータ情報を追加/更新しました"
     else
-      @errors = import(@file)
-      binding.pry
-      redirect_to bulk_new_students_path, notice: "#{ @errors }行目がエラーです" 
+      redirect_to bulk_new_students_path, notice: "#{ @errors }" 
     end
   end
 

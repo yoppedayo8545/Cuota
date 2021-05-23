@@ -32,27 +32,25 @@ class Student < ApplicationRecord
       CSV.foreach(file.path, encoding: 'Shift_JIS:UTF-8', headers: true, skip_blanks: true).with_index(1) do |row, row_number|  
         student = find_by(id: row["id"]) || new
         student.attributes = row.to_hash.slice(*updatable_attributes)
-        if student.save
-          @num += 1
-        else
-          # カラムが正しいか判定
-          if student.valid?
-            # indexを返す 
-            @error_nums.push("#{row_number}")
+        begin
+          if student.save!
+            @num += 1
           else
-            # 不正なカラムの抽出
-            @errors.push(:messages => student.errors.full_messages)
-            break
           end
+        rescue
+           # 不正なカラムの抽出
+           @error_nums.push("#{row_number}")
+           @errors.push({:row_num => row_number, :messages => student.errors.full_messages})
+           next
         end
       end
     end
-    if @num > 0
-      @num
-    elsif @error_nums.present?
-      @error_nums
-    else @errors.present?
+    if @errors.present?
       @errors
+    else 
+      @num
+    # elsif @errors.present?
+      # @errors
     end
   end
   
