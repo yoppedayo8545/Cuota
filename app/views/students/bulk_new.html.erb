@@ -6,8 +6,20 @@
     <%= link_to image_tag('cuota-sample.png', class:"cuota-icon"), "/" %>
    </div> 
   </div>
-    <%= render "devise/shared/error_messages", resource: @student %> 
-    <div class="notice"><%= flash[:notice] %></div>
+    <div class="notice">
+      <%= flash[:notice] %>
+    </div>
+    <div class="notice">
+      <% if @student_counts.instance_of?(Array) %>
+      <ul> 
+       <% @student_counts.each do |error| %> 
+         <% error[:messages].each do |message| %> 
+           <li><%= "#{error[:row_num]}行目：#{message}" %></li><br>
+         <% end %> 
+       <% end %> 
+       </ul>
+      <% end %> 
+    </div>
   <h1>生徒一括登録</h1>
   <div class="box-student-csv">
     <div class="box-inner">
@@ -55,13 +67,6 @@
         <div class="box-login">
           <%= submit_tag "一括登録"%>
         </div>
-        <% if @errors.present? %> 
-         <% @errors.each do |error| %> 
-           <% error[:messages].each do |message| %> 
-             <li><%= "#{error[:row_num]}行目：#{message}" %></li> 
-           <% end %> 
-         <% end %> 
-        <% end %> 
       <% end %>
   </div>
 </div>
