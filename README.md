@@ -20,7 +20,7 @@ MySQL (v5.6.51)
 AWS EC2(Amazon Linux 2)
 
 ## ER図
-[ER図](/ERD.png)
+[ER図](/docs/ERD.png)
 ====
 
 ====
