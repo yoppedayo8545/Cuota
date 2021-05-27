@@ -1,30 +1,41 @@
 # README
 
-## 開発環境
+# アプリケーション名
 
-* Ruby/Ruby on Rails/MySQL/Github/AWS/Visual Studio Code
-
-## アプリケーション名
-
-* Cuota
+# Cuota
 
 ## アプリケーション概要
 
 * 学校の先生と養護教諭(保健室の先生)などが、受け持つ生徒の情報を共有することが出来る。
 
-## URL
+====
+# 開発環境
 
+## 主要構成
+Ruby (v2.6.5)
+Ruby on Rails (v6.0.3)
+MySQL (v5.6.51)
+
+### 本番環境
+AWS EC2(Amazon Linux 2)
+
+## ER図
+[ER図](/ERD.png)
+====
+
+====
+# 本番環境について
+## 接続先URL
 * http://54.150.116.142/
 
-## テスト用アカウント
-
+## Basic認証
 * id       admin
 * password 0115
 
-## ログイン用アカウント
-
+## Login情報
 * email    yoshida@gmail
 * password 2720010
+====
 
 ## 利用方法
 
@@ -36,7 +47,7 @@
 
 ## 洗い出した要件
 
-* ログイン機能(養護教諭)
+* ログイン機能(養護教諭) 
 * 生徒の情報を入力できる機能
 * 生徒の情報を確認できる機能
 * 生徒の情報を更新できる機能
@@ -48,22 +59,12 @@
 <!-- ## 実装した機能についての画像やGIFおよびその説明 -->
 
 
-
-
-## 実装予定の機能
-
-* csvの読み込み
-* 印刷機能
-* ユーザー権限変更・譲渡機能
-* 兄弟管理機能
-
 <!-- ## データベース設計 -->
-
 
 
 <!-- ## ローカルでの動作方法 -->
 
-## nursing_teachers
+<!-- ## nursing_teachers
 
 | column                | Type         | Options                        |
 | --------------------- | ------------ | ------------------------------ |
@@ -76,7 +77,7 @@
 ### Association
 
 - belongs_to :school
-- has_many   :students
+- has_many   :students -->
 
 
 <!-- ## schools -->
@@ -97,7 +98,7 @@
 <!-- - has_many   :homeroom_teachers -->
 
 
-## students
+<!-- ## students
 
 | column                | Type         | Options                        |
 | --------------------- | ------------ | ------------------------------ |
@@ -128,7 +129,7 @@
 - belongs_to   :nursing_teacher
 - belongs_to   :school
 - belongs_to   :homeroom_teacher
-- has_one      :medical_checkup
+- has_one      :medical_checkup -->
 
 
 <!-- ## medical_checkups -->
