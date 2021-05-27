@@ -115,6 +115,7 @@ ul.year-list li {
 	position:relative;
 	padding: 0em 0.3em 0.3em 1.3em;
 }
+
 ul.year-list li::before {
 	position: absolute;
 	content: '';
@@ -445,4 +446,11 @@ h6 {
 .mandatory-item-details {
   display: flex;
   justify-content: space-between;
+}
+
+.notice {
+  text-align: center;
+  color: brown;
+  font-size: large;
+  margin-bottom: 20px;
 }
