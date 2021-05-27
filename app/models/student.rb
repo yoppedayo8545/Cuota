@@ -3,7 +3,7 @@ class Student < ApplicationRecord
   has_one_attached :image
 
   with_options presence: true do
-    validates :last_name, :first_name, :school_year_id, :school_class_id, :number, :gender_id, :school_id
+    validates :last_name, :first_name, :last_kana, :first_kana, :school_year_id, :school_class_id, :number, :gender_id, :school_id
   end
 
   validates :number, numericality: { only_integer: true }
@@ -39,7 +39,6 @@ class Student < ApplicationRecord
           end
         rescue
            # 不正なカラムの抽出
-           @error_nums.push("#{row_number}")
            @errors.push({:row_num => row_number, :messages => student.errors.full_messages})
            next
         end
@@ -49,8 +48,6 @@ class Student < ApplicationRecord
       @errors
     else 
       @num
-    # elsif @errors.present?
-      # @errors
     end
   end
   
