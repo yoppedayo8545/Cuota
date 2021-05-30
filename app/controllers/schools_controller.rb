@@ -30,7 +30,8 @@ class SchoolsController < ApplicationController
     student_ids = params[:student_ids]
     if student_ids.nil?
       render :class_change_one_year
-    else @student = Student.find(params[:student_ids])
+    else 
+      @student = Student.find(params[:student_ids])
          @student.each do |student|
            student.school_class_id = @class_id
            student.save
