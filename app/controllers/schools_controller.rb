@@ -218,10 +218,10 @@ class SchoolsController < ApplicationController
   end
 
   def year_check
-    @students = Student.all
+    students = Student.all
     require 'date'
     now = Date.today
-      @students.each do |student|
+      students.each do |student|
         if now.month != 4 && student.school_year_update == 1
         student.increment( :school_year_update, -1 )
         student.save
