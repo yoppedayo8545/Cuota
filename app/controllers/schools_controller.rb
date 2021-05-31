@@ -1,4 +1,6 @@
 class SchoolsController < ApplicationController
+  require 'date'
+  
   before_action :authenticate_nursing_teacher!, only: [:index]
   before_action :year_update, only: [:index] 
   before_action :year_check, only: [:index] 
@@ -224,7 +226,6 @@ class SchoolsController < ApplicationController
 
   def year_check
     students = Student.all
-    require 'date'
     now = Date.today
       students.each do |student|
         if now.month != 4 && student.school_year_update == 1
