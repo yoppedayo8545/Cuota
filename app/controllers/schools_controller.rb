@@ -1,4 +1,6 @@
 class SchoolsController < ApplicationController
+  require 'date'
+  
   before_action :authenticate_nursing_teacher!, only: [:index]
   before_action :year_update, only: [:index] 
   before_action :year_check, only: [:index] 
@@ -26,176 +28,182 @@ class SchoolsController < ApplicationController
   end
 
   def reset_one_year
-    @class_id = params[:school_class_id]
+    class_id = params[:school_class_id]
     student_ids = params[:student_ids]
     if student_ids.nil?
       render :class_change_one_year
-    else @student = Student.find(params[:student_ids])
-         @student.each do |student|
-           student.school_class_id = @class_id
-           student.save
-         end
-         @students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 1, school_class_id: 1).order(:gender_id).order(:last_kana).order(:date)
-         @students.each_with_index do |student, num|
-          student.number = "#{num+1}"
-          student.save
-         end
-         @students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 1, school_class_id: 2).order(:gender_id).order(:last_kana).order(:date)
-          @students.each_with_index do |student, num|
-           student.number = "#{num+1}"
-           student.save
-         end
-         @students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 1, school_class_id: 3).order(:gender_id).order(:last_kana).order(:date)
-          @students.each_with_index do |student, num|
-           student.number = "#{num+1}"
-           student.save
-         end
-       redirect_to class_change_one_year_schools_path
+    else 
+      students_changing_id = Student.find(params[:student_ids])
+      students_changing_id.each do |student|
+       student.school_class_id = class_id
+       student.save
+      end
+      students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 1, school_class_id: 1).sort_students
+      students.each.with_index(1) do |student, num|
+       student.number = "#{num}"
+       student.save
+      end
+      students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 1, school_class_id: 2).sort_students
+      students.each.with_index(1) do |student, num|
+       student.number = "#{num}"
+       student.save
+      end
+      students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 1, school_class_id: 3).sort_students
+      students.each.with_index(1) do |student, num|
+       student.number = "#{num}"
+       student.save
+      end
+      redirect_to class_change_one_year_schools_path
     end
   end
 
   def reset_second_year
-    @class_id = params[:school_class_id]
+    class_id = params[:school_class_id]
     student_ids = params[:student_ids]
     if student_ids.nil?
       render :class_change_second_year
-    else @student = Student.find(params[:student_ids])
-         @student.each do |student|
-           student.school_class_id = @class_id
-           student.save
-         end
-         @students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 2, school_class_id: 1).order(:gender_id).order(:last_kana).order(:date)
-         @students.each_with_index do |student, num|
-          student.number = "#{num+1}"
-          student.save
-         end
-         @students = Student.where(school_id: "#{@nursing_teacher.school_id}",school_year_id: 2, school_class_id: 2).order(:gender_id).order(:last_kana).order(:date)
-          @students.each_with_index do |student, num|
-           student.number = "#{num+1}"
-           student.save
-         end
-         @students = Student.where(school_id: "#{@nursing_teacher.school_id}",school_year_id: 2, school_class_id: 3).order(:gender_id).order(:last_kana).order(:date)
-          @students.each_with_index do |student, num|
-           student.number = "#{num+1}"
-           student.save
-         end
-       redirect_to class_change_second_year_schools_path
+    else 
+      students_changing_id = Student.find(params[:student_ids])
+      students_changing_id.each do |student|
+        student.school_class_id = class_id
+        student.save
+      end
+      students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 2, school_class_id: 1).sort_students
+      students.each.with_index(1) do |student, num|
+       student.number = "#{num}"
+       student.save
+      end
+      students = Student.where(school_id: "#{@nursing_teacher.school_id}",school_year_id: 2, school_class_id: 2).sort_students
+      students.each.with_index(1) do |student, num|
+       student.number = "#{num}"
+       student.save
+      end
+      students = Student.where(school_id: "#{@nursing_teacher.school_id}",school_year_id: 2, school_class_id: 3).sort_students
+      students.each_with_index do |student, num|
+       student.number = "#{num}"
+       student.save
+      end
+      redirect_to class_change_second_year_schools_path
     end
   end
 
   def reset_third_year
-    @class_id = params[:school_class_id]
+    class_id = params[:school_class_id]
     student_ids = params[:student_ids]
     if student_ids.nil?
       render :class_change_third_year
-    else @student = Student.find(params[:student_ids])
-         @student.each do |student|
-           student.school_class_id = @class_id
-           student.save
-         end
-         @students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 3, school_class_id: 1).order(:gender_id).order(:last_kana).order(:date)
-         @students.each_with_index do |student, num|
-          student.number = "#{num+1}"
-          student.save
-         end
-         @students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 3, school_class_id: 2).order(:gender_id).order(:last_kana).order(:date)
-          @students.each_with_index do |student, num|
-           student.number = "#{num+1}"
-           student.save
-         end
-         @students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 3, school_class_id: 3).order(:gender_id).order(:last_kana).order(:date)
-          @students.each_with_index do |student, num|
-           student.number = "#{num+1}"
-           student.save
-         end
-       redirect_to class_change_third_year_schools_path
+    else 
+      students_changing_id = Student.find(params[:student_ids])
+      students_changing_id.each do |student|
+       student.school_class_id = class_id
+       student.save
+      end
+      students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 3, school_class_id: 1).sort_students
+      students.each.with_index(1) do |student, num|
+       student.number = "#{num}"
+       student.save
+      end
+      students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 3, school_class_id: 2).sort_students
+      students.each.with_index(1) do |student, num|
+       student.number = "#{num}"
+       student.save
+      end
+      students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 3, school_class_id: 3).sort_students
+      students.each.with_index(1) do |student, num|
+       student.number = "#{num}"
+       student.save
+      end
+      redirect_to class_change_third_year_schools_path
     end
   end
 
   def reset_fourth_year
-    @class_id = params[:school_class_id]
+    class_id = params[:school_class_id]
     student_ids = params[:student_ids]
     if student_ids.nil?
       render :class_change_fourth_year
-    else @student = Student.find(params[:student_ids])
-         @student.each do |student|
-           student.school_class_id = @class_id
-           student.save
-         end
-         @students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 4, school_class_id: 1).order(:gender_id).order(:last_kana).order(:date)
-         @students.each_with_index do |student, num|
-          student.number = "#{num+1}"
-          student.save
-         end
-         @students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 4, school_class_id: 2).order(:gender_id).order(:last_kana).order(:date)
-          @students.each_with_index do |student, num|
-           student.number = "#{num+1}"
-           student.save
-         end
-         @students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 4, school_class_id: 3).order(:gender_id).order(:last_kana).order(:date)
-          @students.each_with_index do |student, num|
-           student.number = "#{num+1}"
-           student.save
-         end
-       redirect_to class_change_fourth_year_schools_path
+    else 
+      student = Student.find(params[:student_ids])
+      student.each do |student|
+       student.school_class_id = class_id
+       student.save
+      end
+      students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 4, school_class_id: 1).sort_students
+      students.each.with_index(1) do |student, num|
+       student.number = "#{num}"
+       student.save
+      end
+      students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 4, school_class_id: 2).sort_students
+      students.each.with_index(1) do |student, num|
+       student.number = "#{num}"
+       student.save
+      end
+      students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 4, school_class_id: 3).sort_students
+      students.each.with_index(1) do |student, num|
+       student.number = "#{num}"
+       student.save
+      end
+      redirect_to class_change_fourth_year_schools_path
     end
   end
 
   def reset_fifth_year
-    @class_id = params[:school_class_id]
+    class_id = params[:school_class_id]
     student_ids = params[:student_ids]
     if student_ids.nil?
       render :class_change_fifth_year
-    else @student = Student.find(params[:student_ids])
-         @student.each do |student|
-           student.school_class_id = @class_id
-           student.save
-         end
-         @students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 5, school_class_id: 1).order(:gender_id).order(:last_kana).order(:date)
-         @students.each_with_index do |student, num|
-          student.number = "#{num+1}"
-          student.save
-         end
-         @students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 5, school_class_id: 2).order(:gender_id).order(:last_kana).order(:date)
-          @students.each_with_index do |student, num|
-           student.number = "#{num+1}"
-           student.save
-         end
-         @students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 5, school_class_id: 3).order(:gender_id).order(:last_kana).order(:date)
-          @students.each_with_index do |student, num|
-           student.number = "#{num+1}"
-           student.save
-         end
-       redirect_to class_change_fifth_year_schools_path
+    else 
+      students_changing_id = Student.find(params[:student_ids])
+      students_changing_id.each do |student|
+       student.school_class_id = class_id
+       student.save
+      end
+      students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 5, school_class_id: 1).sort_students
+      students.each.with_index(1) do |student, num|
+       student.number = "#{num}"
+       student.save
+      end
+      students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 5, school_class_id: 2).sort_students
+      students.each.with_index(1) do |student, num|
+       student.number = "#{num}"
+       student.save
+      end
+      students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 5, school_class_id: 3).sort_students
+      students.each.with_index(1) do |student, num|
+       student.number = "#{num}"
+       student.save
+      end
+      redirect_to class_change_fifth_year_schools_path
     end
   end
 
   def reset_six_year
-    @class_id = params[:school_class_id]
+    class_id = params[:school_class_id]
     student_ids = params[:student_ids]
     if student_ids.nil?
       render :class_change_six_year
-    else @student = Student.find(params[:student_ids])
-         @student.each do |student|
-           student.school_class_id = @class_id
-           student.save
-         end
-         @students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 6, school_class_id: 1).order(:gender_id).order(:last_kana).order(:date)
-         @students.each_with_index do |student, num|
-          student.number = "#{num+1}"
-          student.save
-         end
-         @students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 6, school_class_id: 2).order(:gender_id).order(:last_kana).order(:date)
-          @students.each_with_index do |student, num|
-           student.number = "#{num+1}"
-           student.save
-         end
-         @students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 6, school_class_id: 3).order(:gender_id).order(:last_kana).order(:date)
-          @students.each_with_index do |student, num|
-           student.number = "#{num+1}"
-           student.save
-         end
-       redirect_to class_change_six_year_schools_path
+    else 
+      students_changing_id = Student.find(params[:student_ids])
+      students_changing_id.each do |student|
+       student.school_class_id = class_id
+       student.save
+      end
+      students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 6, school_class_id: 1).sort_students
+      students.each.with_index(1) do |student, num|
+       student.number = "#{num}"
+       student.save
+      end
+      students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 6, school_class_id: 2).sort_students
+      students.each.with_index(1) do |student, num|
+       student.number = "#{num}"
+       student.save
+      end
+      students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 6, school_class_id: 3).sort_students
+      students.each.with_index(1) do |student, num|
+       student.number = "#{num}"
+       student.save
+      end
+      redirect_to class_change_six_year_schools_path
     end
   end
 
@@ -217,20 +225,18 @@ class SchoolsController < ApplicationController
   end
 
   def year_check
-    @students = Student.all
-    require 'date'
+    students = Student.all
     now = Date.today
-      @students.each do |student|
+      students.each do |student|
         if now.month != 4 && student.school_year_update == 1
-        student.increment( :school_year_update, -1 )
-        student.save
+        student.decrement!( :school_year_update, 1 )
         end
       end
   end
 
   def id_set
     @nursing_teacher = NursingTeacher.find(current_nursing_teacher.id)
-    @students = Student.all.order(:gender_id).order(:last_kana).order(:date)
+    @students = Student.all.sort_students
   end
 
   def student_params
