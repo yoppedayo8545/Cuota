@@ -37,18 +37,18 @@ class SchoolsController < ApplicationController
        student.save
       end
       students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 1, school_class_id: 1).order(:gender_id).order(:last_kana).order(:date)
-      students.each_with_index do |student, num|
-       student.number = "#{num+1}"
+      students.each.with_index(1) do |student, num|
+       student.number = "#{num}"
        student.save
       end
       students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 1, school_class_id: 2).order(:gender_id).order(:last_kana).order(:date)
-      students.each_with_index do |student, num|
-       student.number = "#{num+1}"
+      students.each.with_index(1) do |student, num|
+       student.number = "#{num}"
        student.save
       end
       students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 1, school_class_id: 3).order(:gender_id).order(:last_kana).order(:date)
-      students.each_with_index do |student, num|
-       student.number = "#{num+1}"
+      students.each.with_index(1) do |student, num|
+       student.number = "#{num}"
        student.save
       end
       redirect_to class_change_one_year_schools_path
@@ -67,18 +67,18 @@ class SchoolsController < ApplicationController
         student.save
       end
       students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 2, school_class_id: 1).order(:gender_id).order(:last_kana).order(:date)
-      students.each_with_index do |student, num|
-       student.number = "#{num+1}"
+      students.each.with_index(1) do |student, num|
+       student.number = "#{num}"
        student.save
       end
       students = Student.where(school_id: "#{@nursing_teacher.school_id}",school_year_id: 2, school_class_id: 2).order(:gender_id).order(:last_kana).order(:date)
-      students.each_with_index do |student, num|
-       student.number = "#{num+1}"
+      students.each.with_index(1) do |student, num|
+       student.number = "#{num}"
        student.save
       end
       students = Student.where(school_id: "#{@nursing_teacher.school_id}",school_year_id: 2, school_class_id: 3).order(:gender_id).order(:last_kana).order(:date)
       students.each_with_index do |student, num|
-       student.number = "#{num+1}"
+       student.number = "#{num}"
        student.save
       end
       redirect_to class_change_second_year_schools_path
@@ -97,18 +97,18 @@ class SchoolsController < ApplicationController
        student.save
       end
       students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 3, school_class_id: 1).order(:gender_id).order(:last_kana).order(:date)
-      students.each_with_index do |student, num|
-       student.number = "#{num+1}"
+      students.each.with_index(1) do |student, num|
+       student.number = "#{num}"
        student.save
       end
       students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 3, school_class_id: 2).order(:gender_id).order(:last_kana).order(:date)
-      students.each_with_index do |student, num|
-       student.number = "#{num+1}"
+      students.each.with_index(1) do |student, num|
+       student.number = "#{num}"
        student.save
       end
       students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 3, school_class_id: 3).order(:gender_id).order(:last_kana).order(:date)
-      students.each_with_index do |student, num|
-       student.number = "#{num+1}"
+      students.each.with_index(1) do |student, num|
+       student.number = "#{num}"
        student.save
       end
       redirect_to class_change_third_year_schools_path
@@ -127,18 +127,18 @@ class SchoolsController < ApplicationController
        student.save
       end
       students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 4, school_class_id: 1).order(:gender_id).order(:last_kana).order(:date)
-      students.each_with_index do |student, num|
-       student.number = "#{num+1}"
+      students.each.with_index(1) do |student, num|
+       student.number = "#{num}"
        student.save
       end
       students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 4, school_class_id: 2).order(:gender_id).order(:last_kana).order(:date)
-      students.each_with_index do |student, num|
-       student.number = "#{num+1}"
+      students.each.with_index(1) do |student, num|
+       student.number = "#{num}"
        student.save
       end
       students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 4, school_class_id: 3).order(:gender_id).order(:last_kana).order(:date)
-      students.each_with_index do |student, num|
-       student.number = "#{num+1}"
+      students.each.with_index(1) do |student, num|
+       student.number = "#{num}"
        student.save
       end
       redirect_to class_change_fourth_year_schools_path
@@ -157,18 +157,18 @@ class SchoolsController < ApplicationController
        student.save
       end
       students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 5, school_class_id: 1).order(:gender_id).order(:last_kana).order(:date)
-      students.each_with_index do |student, num|
-       student.number = "#{num+1}"
+      students.each.with_index(1) do |student, num|
+       student.number = "#{num}"
        student.save
       end
       students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 5, school_class_id: 2).order(:gender_id).order(:last_kana).order(:date)
-      students.each_with_index do |student, num|
-       student.number = "#{num+1}"
+      students.each.with_index(1) do |student, num|
+       student.number = "#{num}"
        student.save
       end
       students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 5, school_class_id: 3).order(:gender_id).order(:last_kana).order(:date)
-      students.each_with_index do |student, num|
-       student.number = "#{num+1}"
+      students.each.with_index(1) do |student, num|
+       student.number = "#{num}"
        student.save
       end
       redirect_to class_change_fifth_year_schools_path
@@ -187,18 +187,18 @@ class SchoolsController < ApplicationController
        student.save
       end
       students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 6, school_class_id: 1).order(:gender_id).order(:last_kana).order(:date)
-      students.each_with_index do |student, num|
-       student.number = "#{num+1}"
+      students.each.with_index(1) do |student, num|
+       student.number = "#{num}"
        student.save
       end
       students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 6, school_class_id: 2).order(:gender_id).order(:last_kana).order(:date)
-      students.each_with_index do |student, num|
-       student.number = "#{num+1}"
+      students.each.with_index(1) do |student, num|
+       student.number = "#{num}"
        student.save
       end
       students = Student.where(school_id: "#{@nursing_teacher.school_id}", school_year_id: 6, school_class_id: 3).order(:gender_id).order(:last_kana).order(:date)
-      students.each_with_index do |student, num|
-       student.number = "#{num+1}"
+      students.each.with_index(1) do |student, num|
+       student.number = "#{num}"
        student.save
       end
       redirect_to class_change_six_year_schools_path
