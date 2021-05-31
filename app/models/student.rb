@@ -12,6 +12,8 @@ class Student < ApplicationRecord
     "#{number}  #{last_name}  #{first_name}"
   end
 
+  scope :sort_students, -> { order(:gender_id).order(:last_kana).order(:date) }
+
   def self.search(search)
     if search == 'アレルギー'
       Student.where.not(allergy: " ")
