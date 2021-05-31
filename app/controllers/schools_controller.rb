@@ -228,8 +228,7 @@ class SchoolsController < ApplicationController
     now = Date.today
       students.each do |student|
         if now.month != 4 && student.school_year_update == 1
-        student.increment( :school_year_update, -1 )
-        student.save
+        student.decrement!( :school_year_update, 1 )
         end
       end
   end
