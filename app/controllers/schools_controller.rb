@@ -211,7 +211,6 @@ class SchoolsController < ApplicationController
 
   def year_update
     @students = Student.all
-    require 'date'
     now = Date.today 
     if now.month == 4
       @students.each do |student|
