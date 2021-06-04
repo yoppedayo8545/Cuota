@@ -7,6 +7,10 @@ class SchoolsController < ApplicationController
   before_action :id_set
 
   def index
+    # .group_byを使ってグルーピングしたい…
+    # @one_year = Student.group_by { |year| 
+      # [year[:school_year_id]]
+    #  }
   end
 
   def class_change_one_year
