@@ -43,8 +43,8 @@
               生徒新規登録
             </button>
               <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                <a class="dropdown-item" href="students/new">個別登録</a>
-                <a class="dropdown-item" href="students/bulk_new">一括登録(ファイル取り込み)</a>
+                <%= link_to "個別登録", new_student_path, class:"dropdown-item" %>
+                <%= link_to "一括登録(ファイル取り込み)", bulk_new_students_path, class:"dropdown-item" %>
               </div>
           </div>
           <button type="button" class="btn btn-secondary"><%= link_to '管理者情報編集', edit_nursing_teacher_registration_path, class: "edit" %></button>
@@ -53,12 +53,12 @@
               クラス一括更新
             </button>
               <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                <a class="dropdown-item" href="schools/class_change_one_year">1年生</a>
-                <a class="dropdown-item" href="schools/class_change_second_year">2年生</a>
-                <a class="dropdown-item" href="schools/class_change_third_year">3年生</a>
-                <a class="dropdown-item" href="schools/class_change_fourth_year">4年生</a>
-                <a class="dropdown-item" href="schools/class_change_fifth_year">5年生</a>
-                <a class="dropdown-item" href="schools/class_change_six_year">6年生</a>
+                <%= link_to "1年生", class_change_one_year_schools_path, class:"dropdown-item" %>
+                <%= link_to "2年生", class_change_second_year_schools_path, class:"dropdown-item" %>
+                <%= link_to "3年生", class_change_third_year_schools_path, class:"dropdown-item" %>
+                <%= link_to "4年生", class_change_fourth_year_schools_path, class:"dropdown-item" %>
+                <%= link_to "5年生", class_change_fifth_year_schools_path, class:"dropdown-item" %>
+                <%= link_to "6年生", class_change_six_year_schools_path, class:"dropdown-item" %>
               </div>
           </div>
           <button type="button" class="btn btn-secondary"><%= link_to 'ログアウト', destroy_nursing_teacher_session_path, method: :delete, class: "logout" %></button>
