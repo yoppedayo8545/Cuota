@@ -6,6 +6,9 @@
   </div>
 
 </header>
+    <div class="notice">
+      <%= flash[:notice] %>
+    </div>
 <%= form_with model: @student, url: reset_third_year_schools_path, local: true do |f| %>
 <div class="btn-group-top">
   <div>
