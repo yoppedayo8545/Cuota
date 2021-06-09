@@ -34,9 +34,8 @@ class SchoolsController < ApplicationController
   def reset_one_year
     class_id = params[:school_class_id]
     student_ids = params[:student_ids]
-    if student_ids.nil?
-      render :class_change_one_year
-    else 
+    return render :class_change_one_year if student_ids.nil?
+    if student_ids.present?
       students_changing_id = Student.find(params[:student_ids])
       students_changing_id.each do |student|
        student.school_class_id = class_id
@@ -64,9 +63,8 @@ class SchoolsController < ApplicationController
   def reset_second_year
     class_id = params[:school_class_id]
     student_ids = params[:student_ids]
-    if student_ids.nil?
-      render :class_change_second_year
-    else 
+    return render :class_change_second_year if student_ids.nil?
+    if student_ids.present?
       students_changing_id = Student.find(params[:student_ids])
       students_changing_id.each do |student|
         student.school_class_id = class_id
@@ -94,9 +92,8 @@ class SchoolsController < ApplicationController
   def reset_third_year
     class_id = params[:school_class_id]
     student_ids = params[:student_ids]
-    if student_ids.nil?
-      render :class_change_third_year
-    else 
+    return render :class_change_third_year if student_ids.nil?
+    if student_ids.present?
       students_changing_id = Student.find(params[:student_ids])
       students_changing_id.each do |student|
        student.school_class_id = class_id
@@ -124,9 +121,8 @@ class SchoolsController < ApplicationController
   def reset_fourth_year
     class_id = params[:school_class_id]
     student_ids = params[:student_ids]
-    if student_ids.nil?
-      render :class_change_fourth_year
-    else 
+    return render :class_change_fourth_year if student_ids.nil?
+    if student_ids.present?
       student = Student.find(params[:student_ids])
       student.each do |student|
        student.school_class_id = class_id
@@ -154,9 +150,8 @@ class SchoolsController < ApplicationController
   def reset_fifth_year
     class_id = params[:school_class_id]
     student_ids = params[:student_ids]
-    if student_ids.nil?
-      render :class_change_fifth_year
-    else 
+    return render :class_change_fifth_year if student_ids.nil?
+    if student_ids.present?
       students_changing_id = Student.find(params[:student_ids])
       students_changing_id.each do |student|
        student.school_class_id = class_id
@@ -184,9 +179,8 @@ class SchoolsController < ApplicationController
   def reset_six_year
     class_id = params[:school_class_id]
     student_ids = params[:student_ids]
-    if student_ids.nil?
-      render :class_change_six_year
-    else 
+    return render :class_change_six_year if student_ids.nil?
+    if student_ids.present?
       students_changing_id = Student.find(params[:student_ids])
       students_changing_id.each do |student|
        student.school_class_id = class_id
