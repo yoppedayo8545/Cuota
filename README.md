@@ -56,6 +56,11 @@ AWS EC2(Amazon Linux 2)
 * クラス一括更新
 * 出席番号更新
 
+## 参考記事
+### CSV取り込み機能
+* https://qiita.com/matsubishi5/items/0ee1a1e9cda037115ec9
+
+
 <!-- ## 実装した機能についての画像やGIFおよびその説明 -->
 
 
