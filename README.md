@@ -57,6 +57,9 @@ AWS EC2(Amazon Linux 2)
 * 出席番号更新
 
 ## 参考記事
+### background(canvas)
+* https://deshinon.com/2019/03/06/background-oshare-kopipe/
+
 ### CSV取り込み機能
 * https://qiita.com/matsubishi5/items/0ee1a1e9cda037115ec9
 
