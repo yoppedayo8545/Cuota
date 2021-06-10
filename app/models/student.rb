@@ -27,6 +27,7 @@ class Student < ApplicationRecord
   end
 
   def self.import(file)
+    return if file.nil?
     Student.transaction do
       @num = 0
       @error_nums = []
