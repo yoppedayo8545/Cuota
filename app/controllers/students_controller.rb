@@ -57,6 +57,8 @@ class StudentsController < ApplicationController
       render :bulk_new
     elsif @student_counts.present?
       redirect_to bulk_new_students_path, notice: "#{ @student_counts.to_s }件のデータ情報を追加/更新しました"
+    elsif @file.nil?
+      redirect_to bulk_new_students_path, notice: "ファイルを選択してください"
     else
       redirect_to bulk_new_students_path, notice: "#{ @errors }" 
     end
