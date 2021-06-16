@@ -48,9 +48,8 @@ class Student < ApplicationRecord
       @errors = []
       CSV.foreach(file.path, encoding: 'Shift_JIS:UTF-8', headers: true, header_converters: header_converter, skip_blanks: true).with_index(1) do |row, row_number|  
         student = find_by(id: row["id"]) || new
-        student.attributes = row.to_hash.slice(*updatable_attributes)
-        begin
-          if student.save!
+        begin 
+          if student.attributes = row.to_hash
             @num += 1
           else
           end
@@ -59,6 +58,7 @@ class Student < ApplicationRecord
            @errors.push({:row_num => row_number, :messages => student.errors.full_messages})
            next
         end
+        student.save!
       end
     end
     if @errors.present?
