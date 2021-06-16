@@ -46,7 +46,7 @@ class Student < ApplicationRecord
       @num = 0
       @error_nums = []
       @errors = []
-      CSV.foreach(file.path, encoding: 'Shift_JIS:UTF-8', headers: true, header_converters: header_converter, skip_blanks: true).with_index(1) do |row, row_number|  
+      CSV.foreach(file.path, encoding: 'Shift_JIS:UTF-8', headers: true, header_converters: header_converter, skip_blanks: true).each_slice(1000).with_index(1) do |row, row_number|  
         student = find_by(id: row["id"]) || new
         begin 
           if student.attributes = row.to_hash
