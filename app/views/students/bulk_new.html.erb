@@ -11,12 +11,16 @@
     </div>
     <div class="notice">
       <% if @student_counts.instance_of?(Array) %>
-      <ul> 
-       <% @student_counts.each do |error| %> 
-         <% error[:messages].each do |message| %> 
-           <li><%= "#{error[:row_num]}行目：#{message}" %></li><br>
-         <% end %> 
-       <% end %> 
+       <ul> 
+           <% @student_counts.each do |error| %> 
+             <% error[:messages].each do |message| %> 
+              <% if error[:row_num] == nil %>
+               <li><%= "カラム\"#{message}\"を追加してください" %></li><br>
+              <% else %>
+               <li><%= "#{error[:row_num]}行目：#{message}" %></li><br>
+              <% end %> 
+             <% end %> 
+           <% end %> 
        </ul>
       <% end %> 
     </div>
