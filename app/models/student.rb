@@ -46,19 +46,24 @@ class Student < ApplicationRecord
       @num = 0
       @error_nums = []
       @errors = []
-      CSV.foreach(file.path, encoding: 'Shift_JIS:UTF-8', headers: true, header_converters: header_converter, skip_blanks: true).each_slice(1000).with_index(1) do |row, row_number|  
-        student = find_by(id: row["id"]) || new
-        begin 
-          if student.attributes = row.to_hash
-            @num += 1
-          else
-          end
-        rescue
-           # 不正なカラムの抽出
-           @errors.push({:row_num => row_number, :messages => student.errors.full_messages})
-           next
+      CSV.foreach(file.path, encoding: 'Shift_JIS:UTF-8', headers: true, header_converters: header_converter, skip_blanks: true).with_index(1) do |row, row_number|  
+        search_culumn(row)
+        unless @error_culumns.blank?
+          return @errors.push({:row_num => nil, :messages => @error_culumns })
         end
-        student.save!
+          student = find_by(id: row["id"]) || new
+          begin 
+            if student.attributes = row.to_hash
+              @num += 1
+            else
+            end
+          rescue
+             # 不正なカラムの抽出
+             student.invalid?
+             @errors.push({:row_num => row_number, :messages => student.errors.full_messages})
+             next
+          end
+          student.save!
       end
     end
     if @errors.present?
@@ -69,9 +74,17 @@ class Student < ApplicationRecord
   end
   
   def self.updatable_attributes
-    ['last_name', 'first_name', 'last_kana', 'first_kana', 'school_year_id', 'school_class_id', 'gender_id', 'school_id', 'number', 'nursing_teacher_id']
+    [:last_name, :first_name, :last_kana, :first_kana, :school_year_id, :school_class_id, :gender_id, :school_id, :number, :nursing_teacher_id]
   end
- 
+  
+  def self.search_culumn(search = [])
+    header = search.headers
+    @error_culumns = [:last_name, :first_name, :last_kana, :first_kana, :school_year_id, :school_class_id, :gender_id, :school_id, :number, :nursing_teacher_id]
+    @error_culumns.delete_if do |h|
+      header.include?(h)
+    end
+  end
+
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :school
   belongs_to :school_year
