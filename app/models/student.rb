@@ -39,6 +39,19 @@ class Student < ApplicationRecord
     '先生' => :nursing_teacher_id
   }
 
+  HEADER_CONVERTER_JA = {
+     last_name: => '姓'
+     first_name: => '名'
+     last_kana: => 'セイ'
+     first_kana: => 'メイ'
+     school_year_id: => '学年'
+     school_class_id: => 'クラス'
+     number: => '出席番号'
+     gender_id: => '性別'
+     school_id: => '学校'
+     nursing_teacher_id: => '先生'
+  }
+
   def self.import(file)
     return if file.nil?
     Student.transaction do
