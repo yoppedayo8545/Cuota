@@ -63,6 +63,7 @@ class Student < ApplicationRecord
         search_culumn(row)
         if @error_culumns.present?
           binding.pry
+          header_converter_ja(@error_culumns)
           @errors.push({:row_num => nil, :messages => @error_culumns })
           return 
         end
@@ -100,8 +101,11 @@ class Student < ApplicationRecord
     end
   end
 
-  def delf.header_converter_ja
-    header_converter_ja = lambda { |h| HEADER_CONVERTER_JA[h] }
+  def self.header_converter_ja(error_culumns)
+    header_converter = HEADER_CONVERTER_JA
+    @error_culumns = error_culumns.map! do |e|
+      e = header_converter[e]
+    end
   end
 
   extend ActiveHash::Associations::ActiveRecordExtensions
