@@ -65,19 +65,22 @@ class Student < ApplicationRecord
           header_converter_ja(@error_culumns)
           return @errors.push({:row_num => nil, :messages => @error_culumns })
         end
-          student = find_by(id: row["id"]) || new
-          begin 
-            if student.attributes = row.to_hash
+        student = find_by(id: row["id"]) || new
+        student.attributes = row.to_hash
+          if student.valid?
               @num += 1
-            else
-            end
-          rescue
-             # 不正なカラムの抽出
-             student.invalid?
-             @errors.push({:row_num => row_number, :messages => student.errors.full_messages})
-             next
+              next
+          else
+            # 不正なカラムの抽出
+            @errors.push({:row_num => row_number, :messages => student.errors.full_messages})
+            next 
           end
-          student.save!
+          if @errors.present?
+            header_converter_ja(@errors)
+            return
+          else
+            student.save!
+          end
       end
     end
     if @errors.present?
