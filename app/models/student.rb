@@ -60,6 +60,7 @@ class Student < ApplicationRecord
       @error_nums = []
       @errors = []
       CSV.foreach(file.path, encoding: 'Shift_JIS:UTF-8', headers: true, header_converters: header_converter, skip_blanks: true).with_index(1) do |row, row_number|  
+        # カラムがあるかチェック
         search_culumn(row)
         if @error_culumns.present?
           header_converter_ja(@error_culumns)
@@ -67,20 +68,15 @@ class Student < ApplicationRecord
         end
         student = find_by(id: row["id"]) || new
         student.attributes = row.to_hash
-          if student.valid?
-              @num += 1
-              next
-          else
-            # 不正なカラムの抽出
-            @errors.push({:row_num => row_number, :messages => student.errors.full_messages})
-            next 
-          end
-          if @errors.present?
-            header_converter_ja(@errors)
-            return
-          else
-            student.save!
-          end
+        # エラーが無い場合に件数の抽出
+        if student.valid?
+          @num += 1
+        else
+        # 不正なカラムの抽出
+          @errors.push({:row_num => row_number, :messages => student.errors.full_messages})
+          next
+        end
+        student.save!
       end
     end
     if @errors.present?
