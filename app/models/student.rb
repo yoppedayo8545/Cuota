@@ -62,10 +62,8 @@ class Student < ApplicationRecord
       CSV.foreach(file.path, encoding: 'Shift_JIS:UTF-8', headers: true, header_converters: header_converter, skip_blanks: true).with_index(1) do |row, row_number|  
         search_culumn(row)
         if @error_culumns.present?
-          binding.pry
           header_converter_ja(@error_culumns)
-          @errors.push({:row_num => nil, :messages => @error_culumns })
-          return 
+          return @errors.push({:row_num => nil, :messages => @error_culumns })
         end
           student = find_by(id: row["id"]) || new
           begin 
