@@ -40,16 +40,16 @@ class Student < ApplicationRecord
   }
 
   HEADER_CONVERTER_JA = {
-     :last_name => '姓',
-     :first_name => '名',
-     :last_kana => 'セイ',
-     :first_kana => 'メイ',
-     :school_year_id => '学年',
-     :school_class_id => 'クラス',
-     :number => '出席番号',
-     :gender_id => '性別',
-     :school_id => '学校',
-     :nursing_teacher_id => '先生'
+     last_name: '姓',
+     first_name: '名',
+     last_kana: 'セイ',
+     first_kana: 'メイ',
+     school_year_id: '学年',
+     school_class_id: 'クラス',
+     number: '出席番号',
+     gender_id: '性別',
+     school_id: '学校',
+     nursing_teacher_id: '先生'
   }
 
   def self.import(file)
@@ -61,9 +61,10 @@ class Student < ApplicationRecord
       @errors = []
       CSV.foreach(file.path, encoding: 'Shift_JIS:UTF-8', headers: true, header_converters: header_converter, skip_blanks: true).with_index(1) do |row, row_number|  
         search_culumn(row)
-        unless @error_culumns.blank?
+        if @error_culumns.present?
           binding.pry
-          return @errors.push({:row_num => nil, :messages => @error_culumns })
+          @errors.push({:row_num => nil, :messages => @error_culumns })
+          return 
         end
           student = find_by(id: row["id"]) || new
           begin 
@@ -97,6 +98,10 @@ class Student < ApplicationRecord
     @error_culumns.delete_if do |h|
       header.include?(h)
     end
+  end
+
+  def delf.header_converter_ja
+    header_converter_ja = lambda { |h| HEADER_CONVERTER_JA[h] }
   end
 
   extend ActiveHash::Associations::ActiveRecordExtensions
