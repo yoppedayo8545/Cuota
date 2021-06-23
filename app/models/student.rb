@@ -90,6 +90,7 @@ class Student < ApplicationRecord
     [:last_name, :first_name, :last_kana, :first_kana, :school_year_id, :school_class_id, :gender_id, :school_id, :number, :nursing_teacher_id]
   end
   
+  # csvデータのカラム判定
   def self.search_culumn(search = [])
     header = search.headers
     @error_culumns = [:last_name, :first_name, :last_kana, :first_kana, :school_year_id, :school_class_id, :gender_id, :school_id, :number, :nursing_teacher_id]
@@ -98,6 +99,7 @@ class Student < ApplicationRecord
     end
   end
 
+  # search_culumnメソッドで取得したカラムの日本語化
   def self.header_converter_ja(error_culumns)
     header_converter = HEADER_CONVERTER_JA
     @error_culumns = error_culumns.map! do |e|
